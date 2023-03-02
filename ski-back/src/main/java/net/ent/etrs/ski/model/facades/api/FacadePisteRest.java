@@ -1,6 +1,7 @@
 package net.ent.etrs.ski.model.facades.api;
 
 import net.ent.etrs.ski.exceptions.BusinessException;
+import net.ent.etrs.ski.exceptions.DaoException;
 import net.ent.etrs.ski.model.entities.Piste;
 import net.ent.etrs.ski.model.entities.Station;
 import net.ent.etrs.ski.model.facades.FacadePiste;
@@ -9,6 +10,7 @@ import net.ent.etrs.ski.model.facades.api.dtos.PisteDto;
 import net.ent.etrs.ski.model.facades.api.dtos.StationDto;
 import net.ent.etrs.ski.model.facades.api.dtos.converters.PisteDtoConverter;
 import net.ent.etrs.ski.model.facades.api.dtos.converters.StationDtoConverter;
+import net.ent.etrs.ski.utils.Utils;
 import org.apache.commons.collections4.IterableUtils;
 
 import javax.inject.Inject;
@@ -16,6 +18,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Path("/pistes")
@@ -100,6 +103,18 @@ public class FacadePisteRest {
             this.facadePiste.delete(id);
             return Response.status(Response.Status.NO_CONTENT).build();
         } catch (BusinessException e) {
+            return Response.serverError().build();
+        }
+    }
+    @GET
+    @Path("/count")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response count(@QueryParam("filterBy") @DefaultValue("") String filterBy) {
+        try {
+            Map<String, String> filter = Utils.strToMap(filterBy);
+            int count = this.facadePiste.count(filter);
+            return Response.ok(count).build();
+        } catch (DaoException e) {
             return Response.serverError().build();
         }
     }

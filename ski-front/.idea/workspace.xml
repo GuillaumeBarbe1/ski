@@ -10,7 +10,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="112392dd-a81c-486a-a8e7-3945d084aef0" name="Changes" comment="" />
+    <list default="true" id="112392dd-a81c-486a-a8e7-3945d084aef0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/utils/Hash.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/utils/Utils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/utils/ValidatorUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/DaoPiste.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/DaoPiste.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/impl/DaoPisteImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/impl/DaoPisteImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/FacadePiste.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/FacadePiste.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/FacadePisteRest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/FacadePisteRest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -64,7 +73,9 @@
     <option name="version" value="2" />
   </component>
   <component name="ProjectId" id="2LMU6Es3pJELuMWrAwwBrJYCoFA" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="false" />
@@ -73,7 +84,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "E:/UV3/Cours JEE/TP/SkiRest",
+    "last_opened_file_path": "E:/UV3/Cours JEE/TP/SkiRest/ski-back/src/main/java/net/ent/etrs/ski/utils",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -81,7 +92,7 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "tasks",
+    "settings.editor.selected.configurable": "editing.templates",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -90,11 +101,11 @@
       <recent name="net.ent.etrs.ski.exceptions" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\UV3\Cours JEE\TP\SkiRest\ski-back\src\main\java\net\ent\etrs\ski\utils" />
       <recent name="D:\Cours\UV3\JavaEE\TP2\ski-front\src\main\java\net\ent\etrs\ski\model\facades\dtos" />
       <recent name="P:\Ecrit_pour\kevin.ledeme\WS\ski_falgat\ski-rest\ski-front\src\main\java\net\ent\etrs\ski\model\facades\dtos" />
       <recent name="E:\KL16 -RIA\ski\src\main\java\net\ent\etrs\ski\view\remontee" />
       <recent name="E:\KL16 -RIA\ski\src\main\java\net\ent\etrs\ski\view" />
-      <recent name="E:\KL16 -RIA\ski\src\main\java\net\ent\etrs\ski\view\forfait" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\KL16 -RIA\ski\src\main\webapp\resources\img" />
@@ -253,7 +264,7 @@
       <workItem from="1677676527274" duration="2846000" />
       <workItem from="1677682158483" duration="2220000" />
       <workItem from="1677685390238" duration="1346000" />
-      <workItem from="1677749644094" duration="3971000" />
+      <workItem from="1677749644094" duration="8595000" />
     </task>
     <servers />
   </component>

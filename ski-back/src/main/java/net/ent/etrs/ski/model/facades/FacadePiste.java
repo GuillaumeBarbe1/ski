@@ -87,7 +87,7 @@ public class FacadePiste {
         return this.daoPiste.load(first, pageSize, sortBy, filterBy);
     }
     
-    public int count(Map<String, FilterMeta> filterBy) {
+    public int count(Map<String, String> filterBy) {
         return this.daoPiste.count(filterBy);
     }
 }
