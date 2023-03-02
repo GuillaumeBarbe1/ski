@@ -1,0 +1,52 @@
+<ui:composition lang="Fr" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/templates/main.xhtml">
+
+      <ui:define name="titre">Créer une piste</ui:define>
+
+      <ui:define name="corps">
+         <h:form>
+            <p:messages globalOnly="true"/>
+
+            <p:panelGrid columns="3">
+               <p:outputLabel for="nom" value="Nom "/>
+               <p:inputText id="nom" value="#{pisteFicheBean.piste.nom}" />
+               <p:message for="nom"/>
+
+               <p:outputLabel for="etat" value="État de la piste : "/>
+               <p:selectOneRadio id="etat" value="#{pisteFicheBean.piste.etat}">
+                  <f:selectItems value="#{pisteFicheBean.etats}" var="e" itemValue="#{e}"
+                                 itemLabel="#{e}"/>
+               </p:selectOneRadio>
+               <p:message for="etat"/>
+
+               <p:outputLabel for="niveau" value="Niveau : "/>
+               <p:selectOneMenu id="niveau" value="#{pisteFicheBean.piste.niveau}">
+                  <f:selectItems value="#{pisteFicheBean.niveaux}" var="n" itemValue="#{n}" itemLabel="#{n}" />
+               </p:selectOneMenu>
+               <p:message for="niveau"/>
+
+               <p:outputLabel for="longueur" value="Longueur (en mètre) " />
+               <p:inputText id="longueur" value="#{pisteFicheBean.piste.longueur}" />
+               <p:message for="longueur"/>
+
+               <p:outputLabel for="pente" value="Pente moyenne (en %) " />
+               <p:inputText id="pente" value="#{pisteFicheBean.piste.penteMoy}" />
+               <p:message for="pente"/>
+
+               <p:outputLabel for="remontees" value="Pistes : "/>
+               <p:selectManyMenu id="remontees" value="#{pisteFicheBean.piste.remontees}" showCheckbox="true" converter="#{genericConverter}" >
+                  <f:attribute name="collectionType" value="java.util.ArrayList" />
+                  <f:selectItems value="#{pisteFicheBean.remonteesDispo}" var="r" itemValue="#{r}" itemLabel="#{r.nom}" />
+               </p:selectManyMenu>
+               <p:message for="remontees"/>
+
+               <p:commandButton value="Valider" action="/pages/piste/liste.xhtml?faces-redirect=true" actionListener="#{pisteFicheBean.valider()}" process="@form" update="@form growl"/>
+               <p:commandButton value="Retour" immediate="true" action="/pages/piste/liste.xhtml?faces-redirect=true"/>
+            </p:panelGrid>
+         </h:form>
+      </ui:define>
+</ui:composition>

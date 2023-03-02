@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+   <h:head>
+      <h:outputStylesheet library="css" name="theme.css"/>
+      <title>Gestation - <ui:insert name="titre" /></title>
+      <meta charset="UTF-8"/>
+   </h:head>
+
+   <body style="background-color: lightblue">
+      <div class="header">
+         <h1>Gestation</h1>
+         <h:form id="form-menu">
+            <p:menubar>
+               <p:menuitem value="Accueil" icon="pi pi-fw pi-home" action="/index.xhtml?faces-redirect=true"/>
+               <p:menuitem value="Pistes" icon="pi pi-fw pi-arrow-down-right" action="/pages/piste/liste.xhtml?faces-redirect=true"/>
+               <p:menuitem value="Stations" icon="pi pi-fw pi-building" action="/pages/station/liste.xhtml?faces-redirect=true"/>
+               <p:menuitem value="Forfaits" icon="pi pi-fw pi-building" action="/pages/forfait/liste.xhtml?faces-redirect=true"/>
+               <p:menuitem value="Remontées" icon="pi pi-fw pi-building" action="/pages/remontee/liste.xhtml?faces-redirect=true"/>
+               <p:menuitem value="Carte" icon="pi pi-fw pi-map-marker" action="/pages/station/carte.xhtml?faces-redirect=true"/>
+               <p:menuitem value="Login" icon="pi pi-fw pi-user" action="/login.xhtml?faces-redirect=true" rendered="#{loginBean.role==null}"/>
+               <p:menuitem value="Déconnecter" icon="pi pi-fw pi-times" actionListener="#{loginBean.seDeconnecter}" action="/index.xhtml?faces-redirect=true" rendered="#{loginBean.role!=null}"/>
+            </p:menubar>
+         </h:form>
+      </div>
+
+      <article class="content">
+         <h:form id="growl">
+            <p:growl globalOnly="true" showDetail="false"/>
+         </h:form>
+         <h2><ui:insert name="titre" /></h2>
+         <ui:insert name="corps" />
+      </article>
+   </body>
+</html>

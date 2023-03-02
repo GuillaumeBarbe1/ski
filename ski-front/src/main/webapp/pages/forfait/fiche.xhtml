@@ -1,0 +1,37 @@
+<ui:composition lang="Fr" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/templates/main.xhtml">
+
+      <ui:define name="titre">Créer un Forfait</ui:define>
+
+      <ui:define name="corps">
+         <h:form>
+            <p:messages globalOnly="true"/>
+
+            <p:panelGrid columns="3">
+               <p:outputLabel for="nom" value="Nom "/>
+               <p:inputText id="nom" value="#{forfaitFicheBean.forfait.nom}" />
+               <p:message for="nom"/>
+
+
+               <p:outputLabel for="prix" value="Prix journalier" />
+               <p:inputText id="prix" value="#{forfaitFicheBean.forfait.prixJournalier}" />
+               <p:message for="prix"/>
+
+               <p:outputLabel for="pistes" value="Pistes : "/>
+               <p:selectManyMenu id="pistes" value="#{forfaitFicheBean.forfait.pistes}" showCheckbox="true" converter="#{genericConverter}" >
+                  <f:attribute name="collectionType" value="java.util.ArrayList" />
+                  <f:selectItems value="#{forfaitFicheBean.pistes}" var="p" itemValue="#{p}" itemLabel="#{p.nom}" />
+               </p:selectManyMenu>
+               <p:message for="pistes"/>
+
+
+               <p:commandButton value="Valider" action="/pages/forfait/liste.xhtml?faces-redirect=true" actionListener="#{forfaitFicheBean.valider()}" process="@form" update="@form growl"/>
+               <p:commandButton value="Retour" immediate="true" action="/pages/forfait/liste.xhtml?faces-redirect=true"/>
+            </p:panelGrid>
+         </h:form>
+      </ui:define>
+</ui:composition>

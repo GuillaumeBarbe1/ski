@@ -1,0 +1,11 @@
+
+d
+java:S11921"IDefine a constant instead of duplicating this literal "longueur" 6 times.(ù¬õÛüÿÿÿÿ
+b
+java:S1192-"GDefine a constant instead of duplicating this literal "niveau" 6 times.(Âû—Ôÿÿÿÿÿ
+_
+java:S11925"IDefine a constant instead of duplicating this literal "penteMoy" 6 times.(›ß‚œ
+1
+java:S1643Q"Use a StringBuilder instead.(˜¬À[
+m
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.(Í„þ’ûÿÿÿÿ

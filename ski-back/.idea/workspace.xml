@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="ski-back:war exploded" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="112392dd-a81c-486a-a8e7-3945d084aef0" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="cdi.beans_2_0" />
+        <option value="Interface" />
+        <option value="HTML File" />
+        <option value="jsf" />
+        <option value="CSS File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="isToolWindowVisible" value="false" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+        <option name="useMavenConfig" value="true" />
+        <option name="userSettingsFile" value="D:\.m2\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2LMU6Es3pJELuMWrAwwBrJYCoFA" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "P:/Ecrit_pour/kevin.ledeme/WS/ski_falgat/ski-rest/ski-front",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "editing.templates",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="net.ent.etrs.ski.exceptions" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\KL16 -RIA\ski\src\main\java\net\ent\etrs\ski\view\remontee" />
+      <recent name="E:\KL16 -RIA\ski\src\main\java\net\ent\etrs\ski\view" />
+      <recent name="E:\KL16 -RIA\ski\src\main\java\net\ent\etrs\ski\view\forfait" />
+      <recent name="E:\KL16 -RIA\ski\src\main\webapp\pages" />
+      <recent name="F:\KL16 -RIA\ski\src\main\webapp\station" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\KL16 -RIA\ski\src\main\webapp\resources\img" />
+      <recent name="F:\KL16 -RIA\ski\src\main\webapp\pages" />
+      <recent name="E:\KL16 -RIA\ski\src\main\webapp\resources\img" />
+      <recent name="P:\Ecrit_pour\kevin.ledeme\WS\ski\src\main\webapp\piste" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="net.ent.etrs.ski.exceptions" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="net.ent.etrs.ski.init" />
+      <recent name="net.ent.etrs.ski.model.facades.api" />
+      <recent name="net.ent.etrs.ski.model.daos.impl" />
+      <recent name="net.ent.etrs.ski.model.daos" />
+      <recent name="net.ent.etrs.ski.model.facades" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JBoss/WildFly 26.0.1.Final1" type="JBossConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="JBoss/WildFly 26.0.1.Final1" ALTERNATIVE_JRE_ENABLED="false" ALTERNATIVE_JRE_PATH="1.8" nameIsGenerated="true">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="ski-back:war exploded">
+          <settings />
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="SERVER" />
+        <option name="BINDING_SET_NAME" value="" />
+        <option name="DOMAIN" value="false" />
+        <option name="SERVER_GROUP" />
+        <option name="USERNAME" value="" />
+        <option name="CREDENTIAL_ALIAS" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="JBoss" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="64335" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="ski-back:war exploded" />
+        </option>
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="RIA_JURASIC_EJB" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="RIA_JURASIC_EJB" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="112392dd-a81c-486a-a8e7-3945d084aef0" name="Changes" comment="" />
+      <created>1675680271174</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1675680271174</updated>
+      <workItem from="1675680272384" duration="889000" />
+      <workItem from="1675709239371" duration="7436000" />
+      <workItem from="1675752720301" duration="1915000" />
+      <workItem from="1675755551109" duration="15932000" />
+      <workItem from="1675777392462" duration="1439000" />
+      <workItem from="1675778887250" duration="3076000" />
+      <workItem from="1675839061620" duration="504000" />
+      <workItem from="1675839855359" duration="15247000" />
+      <workItem from="1675927655385" duration="3874000" />
+      <workItem from="1675952070352" duration="3222000" />
+      <workItem from="1675959812748" duration="1590000" />
+      <workItem from="1676019850358" duration="5630000" />
+      <workItem from="1676360006608" duration="8902000" />
+      <workItem from="1676371582122" duration="5710000" />
+      <workItem from="1676385037402" duration="6516000" />
+      <workItem from="1676445468160" duration="10537000" />
+      <workItem from="1676470108233" duration="7365000" />
+      <workItem from="1676534046645" duration="8790000" />
+      <workItem from="1676550057199" duration="1581000" />
+      <workItem from="1676551727906" duration="5372000" />
+      <workItem from="1676619512943" duration="1558000" />
+      <workItem from="1676622340881" duration="7680000" />
+      <workItem from="1677572392942" duration="1998000" />
+      <workItem from="1677586201903" duration="2432000" />
+      <workItem from="1677590133519" duration="3652000" />
+      <workItem from="1677597573600" duration="2541000" />
+      <workItem from="1677653574671" duration="1490000" />
+      <workItem from="1677656257570" duration="4590000" />
+      <workItem from="1677663050919" duration="579000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

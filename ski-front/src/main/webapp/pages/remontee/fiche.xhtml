@@ -1,0 +1,36 @@
+<ui:composition lang="Fr" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/templates/main.xhtml">
+
+      <ui:define name="titre">Créer une remontée</ui:define>
+
+      <ui:define name="corps">
+         <h:form>
+            <p:messages globalOnly="true"/>
+
+            <p:panelGrid columns="3">
+               <p:outputLabel for="nom" value="Nom "/>
+               <p:inputText id="nom" value="#{remonteeFicheBean.remontee.nom}" />
+               <p:message for="nom"/>
+
+               <p:outputLabel for="etat" value="État de la remontée : "/>
+               <p:selectOneRadio id="etat" value="#{remonteeFicheBean.remontee.etat}">
+                  <f:selectItems value="#{remonteeFicheBean.etats}" var="e" itemValue="#{e}"
+                                 itemLabel="#{e}"/>
+               </p:selectOneRadio>
+               <p:message for="etat"/>
+
+               <p:outputLabel for="nbPlaceUnite" value="Nombre de place par unité" />
+               <p:inputText id="nbPlaceUnite" value="#{remonteeFicheBean.remontee.nbPlaceUnite}" />
+               <p:message for="nbPlaceUnite"/>
+
+
+               <p:commandButton value="Valider" action="/pages/remontee/liste.xhtml?faces-redirect=true" actionListener="#{remonteeFicheBean.valider()}" process="@form" update="@form growl"/>
+               <p:commandButton value="Retour" immediate="true" action="/pages/remontee/liste.xhtml?faces-redirect=true"/>
+            </p:panelGrid>
+         </h:form>
+      </ui:define>
+</ui:composition>

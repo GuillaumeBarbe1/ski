@@ -1,0 +1,37 @@
+
+body{
+    width:88%;
+    height:100%;
+    background-image : url("#{resource['img:background.jpg']}");
+    background-repeat: no-repeat;
+    background-size: inherit;
+    display: flow-root;
+}
+
+body .ui-panelgrid .ui-panelgrid-cell{
+    border: none !important;
+    border-color: transparent !important;
+    background-color: transparent ! important;
+}
+
+.header{
+    width: 100%;
+    margin-right: 5em;
+    margin-left: 5em;
+    text-align: center;
+    color: antiquewhite;
+}
+
+article{
+    background-color: #398ca9;
+    border-radius: 1%;
+    border-color: #aba07f;
+    border-style: ridge;
+    border-width: 1em;
+    margin-top: 1em;
+    padding-left: 2em;
+    width: 100%;
+    margin-right: 5em;
+    margin-left: 5em;
+    padding-right: 2em;
+}

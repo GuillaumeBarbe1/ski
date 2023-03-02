@@ -1,0 +1,66 @@
+<ui:composition lang="Fr" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:o="http://omnifaces.org/ui"
+                template="/WEB-INF/templates/main.xhtml">
+    <ui:define name="titre">Mes stations</ui:define>
+
+    <ui:define name="corps">
+        <h:form>
+
+            <p:commandButton icon="pi pi-plus"
+                             styleClass="ui-button-primary" value="Créer" immediate="true" action="/pages/station/fiche.xhtml?faces-redirect=true" />
+            <p:dataTable value="#{stationListeBean.stationList}" var="s"  widgetVar="wv"
+                         paginator="true" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rows="10" rowsPerPageTemplate="5,10,15"
+            >
+                <p:column headerText="Nom" sortBy="#{s.nom}" filterBy="#{s.nom}">
+                    #{s.nom}
+                </p:column>
+
+                <p:column headerText="Ville" sortBy="#{s.ville}" filterBy="#{s.ville}">
+                    #{s.ville}
+                </p:column>
+
+                <p:column headerText="Nombre d'habitants" sortBy="#{s.nbHabitants}" filterBy="#{s.nbHabitants}">
+                    #{s.nbHabitants}
+                </p:column>
+
+                <p:column headerText="Altitude" sortBy="#{s.altitude}" filterBy="#{s.altitude}">
+                    #{s.altitude}
+                </p:column>
+
+                <p:column headerText="Etat" sortBy="#{s.etat}" filterBy="#{s.etat}">
+                    <f:facet name="filter">
+                        <p:selectOneMenu onchange="PF('wv').filter()" style="width: 100%">
+                            <f:selectItem itemValue="#{null}" itemLabel="Tous"/>
+                            <f:selectItems value="#{stationListeBean.etats}" var="e" itemValue="#{e}"
+                                           itemLabel="#{e}"/>
+                        </p:selectOneMenu>
+                    </f:facet>
+                    #{s.etat}
+                </p:column>
+
+                <p:column headerText="Photo">
+                    <o:graphicImage value="#{s.photo}" dataURI="true"
+                                    rendered="#{s.photo != null}" style="max-height:100px" />
+                </p:column>
+
+
+                <p:column headerText="Actions">
+                    <p:commandButton icon="pi pi-fw pi-pencil" styleClass="rounded-button ui-button-primary" action="/pages/station/fiche.xhtml?faces-redirect=true" actionListener="#{stationListeBean.modifier(s.id)}" />
+                    <p:commandButton icon="pi pi-fw pi-trash" styleClass="rounded-button ui-button-danger" actionListener="#{stationListeBean.supprimer(s.id)}" process="@this" update="@form growl">
+                        <p:confirm type="popup" header="Confirmation" message="Etes-vous sûre de vouloir supprimer ?" icon="pi pi-exclamation-triangle"/>
+                    </p:commandButton>
+                </p:column>
+
+            </p:dataTable>
+
+            <p:confirmPopup global="true">
+                <p:commandButton value="Non" type="button" styleClass="ui-confirm-popup-no ui-button-flat"/>
+                <p:commandButton value="Oui" type="button" styleClass="ui-confirm-popup-yes" />
+            </p:confirmPopup>
+        </h:form>
+    </ui:define>
+</ui:composition>
