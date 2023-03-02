@@ -10,9 +10,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="112392dd-a81c-486a-a8e7-3945d084aef0" name="Changes" comment="changement count load Piste">
-      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/FacadePiste.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/FacadePiste.java" afterDir="false" />
-    </list>
+    <list default="true" id="112392dd-a81c-486a-a8e7-3945d084aef0" name="Changes" comment="changement count load Piste" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -257,7 +255,7 @@
       <workItem from="1677676527274" duration="2846000" />
       <workItem from="1677682158483" duration="2220000" />
       <workItem from="1677685390238" duration="1346000" />
-      <workItem from="1677749644094" duration="8785000" />
+      <workItem from="1677749644094" duration="9289000" />
     </task>
     <task id="LOCAL-00001" summary="changement count load Piste">
       <created>1677771528191</created>
@@ -266,7 +264,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677771528191</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="changement count load Piste">
+      <created>1677771670268</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1677771670268</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
