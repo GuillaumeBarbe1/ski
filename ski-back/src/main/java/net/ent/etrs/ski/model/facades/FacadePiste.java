@@ -83,7 +83,7 @@ public class FacadePiste {
         }
     }
     
-    public List<Piste> load(int first, int pageSize, Map<String, SortMeta> sortBy, Map<String, FilterMeta> filterBy) {
+    public List<Piste> load(int first, int pageSize, Map<String, String> sortBy, Map<String, String> filterBy) {
         return this.daoPiste.load(first, pageSize, sortBy, filterBy);
     }
     

@@ -10,15 +10,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="112392dd-a81c-486a-a8e7-3945d084aef0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/utils/Hash.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/utils/Utils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/utils/ValidatorUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/DaoPiste.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/DaoPiste.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/impl/DaoPisteImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/impl/DaoPisteImpl.java" afterDir="false" />
+    <list default="true" id="112392dd-a81c-486a-a8e7-3945d084aef0" name="Changes" comment="changement count load Piste">
       <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/FacadePiste.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/FacadePiste.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/FacadePisteRest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/FacadePisteRest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -264,8 +257,16 @@
       <workItem from="1677676527274" duration="2846000" />
       <workItem from="1677682158483" duration="2220000" />
       <workItem from="1677685390238" duration="1346000" />
-      <workItem from="1677749644094" duration="8595000" />
+      <workItem from="1677749644094" duration="8785000" />
     </task>
+    <task id="LOCAL-00001" summary="changement count load Piste">
+      <created>1677771528191</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1677771528191</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -281,5 +282,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="changement count load Piste" />
+    <option name="LAST_COMMIT_MESSAGE" value="changement count load Piste" />
   </component>
 </project>
