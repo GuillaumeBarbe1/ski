@@ -14,6 +14,7 @@ import org.apache.commons.collections4.IterableUtils;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionListener;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -25,7 +26,7 @@ import java.util.List;
 @ViewScoped
 public class ForfaitListeBean implements Serializable {
 
-
+    public final static String FLASH = "forfaits";
     @Inject
     private FacadeForfait facadeForfait;
 
@@ -48,8 +49,12 @@ public class ForfaitListeBean implements Serializable {
         } catch (BusinessException e) {
             JsfUtils.sendMessage(FacesMessage.SEVERITY_ERROR, "Erreur suppression metier");
         }
-        JsfUtils.sendMessage(null, FacesMessage.SEVERITY_INFO, "La station a bien été supprimé !");
+        JsfUtils.sendMessage(null, FacesMessage.SEVERITY_INFO, "Le forfait a bien été supprimé !");
         this.init();
+    }
+
+    public void modifier(Long id) throws Exception {
+        FacesContext.getCurrentInstance().getExternalContext().getFlash().put(this.FLASH, id);
     }
 
 }

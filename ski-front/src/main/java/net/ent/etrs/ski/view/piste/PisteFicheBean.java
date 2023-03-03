@@ -66,7 +66,7 @@ public class PisteFicheBean implements Serializable {
         }
         catch (BusinessException e)
         {
-            JsfUtils.sendMessage(FacesMessage.SEVERITY_ERROR,"Erreur chargement remontées");
+            JsfUtils.sendMessage(FacesMessage.SEVERITY_ERROR,"Erreur chargement pistes");
         }
         return retour;
     }

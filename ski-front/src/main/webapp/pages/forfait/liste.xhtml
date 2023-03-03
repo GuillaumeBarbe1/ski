@@ -29,7 +29,7 @@
             </p:column>
 
             <p:column headerText="Actions">
-
+               <p:commandButton icon="pi pi-fw pi-pencil" styleClass="rounded-button ui-button-primary" action="/pages/forfait/fiche.xhtml?faces-redirect=true" actionListener="#{forfaitListeBean.modifier(f.id)}" />
                <p:commandButton icon="pi pi-fw pi-trash" styleClass="rounded-button ui-button-danger" actionListener="#{forfaitListeBean.supprimer(f.id)}" process="@this" update="@form growl">
                   <p:confirm type="popup" header="Confirmation" message="Etes-vous sûre de vouloir supprimer ?" icon="pi pi-exclamation-triangle"/>
                </p:commandButton>

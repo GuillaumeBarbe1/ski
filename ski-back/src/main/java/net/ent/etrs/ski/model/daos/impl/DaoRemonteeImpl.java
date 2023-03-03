@@ -11,6 +11,7 @@ import net.ent.etrs.ski.model.entities.Remontee;
 import javax.persistence.TypedQuery;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 
 public class DaoRemonteeImpl extends JpaBaseDao<Remontee, Serializable> implements DaoRemontee
 {
@@ -22,14 +23,16 @@ public class DaoRemonteeImpl extends JpaBaseDao<Remontee, Serializable> implemen
                 ") ORDER BY r.nom DESC", Remontee.class);
         return q.getResultList();
     }
-    
+
     @Override
-    public Iterable<Remontee> findAllByPisteId(Long idPiste) throws DaoException {
-        TypedQuery<Remontee> q = this.em.createQuery("SELECT r FROM Remontee r WHERE r IN (" +
-                "SELECT r FROM Piste p LEFT JOIN p.remontees r WHERE p.id = :id" +
-                ") ", Remontee.class);
-        q.setParameter("id", idPiste);
-        return q.getResultList();
+    public Iterable<Remontee> findAllByPiste(Long id) throws DaoException {
+        try {
+            return this.em.createQuery("SELECT r FROM Remontee r WHERE r IN (SELECT r FROM Piste p LEFT JOIN p.remontees r WHERE p.id = :id)", Remontee.class)
+                    .setParameter("id", id)
+                    .getResultList();
+        } catch (Exception e) {
+            throw new DaoException(e);
+        }
     }
-    
+
 }

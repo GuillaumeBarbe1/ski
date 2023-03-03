@@ -10,6 +10,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Path("/remontees")
@@ -21,15 +22,15 @@ public class FacadeRemonteeRest {
     @GET
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findAll(@QueryParam("piste") Long idPiste) {
+    public Response findAll(@QueryParam("piste") Long id) {
         try {
             List<Remontee> list;
-            if (idPiste != null) {
-                list = IterableUtils.toList(this.facadeRemontee.findAllByPisteId(idPiste));
-            } else {
+            if(Objects.isNull(id)){
                 list = IterableUtils.toList(this.facadeRemontee.findAll());
+            } else {
+                list = IterableUtils.toList(this.facadeRemontee.findAllByPiste(id));
             }
-            
+
             return Response.ok(list).build();
         } catch (BusinessException e) {
             return Response.serverError().build();
@@ -100,4 +101,5 @@ public class FacadeRemonteeRest {
             return Response.serverError().build();
         }
     }
+
 }

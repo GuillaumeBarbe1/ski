@@ -11,6 +11,7 @@ import net.ent.etrs.ski.model.facades.FacadeForfait;
 import net.ent.etrs.ski.model.facades.FacadePiste;
 import net.ent.etrs.ski.model.facades.FacadeStation;
 import net.ent.etrs.ski.utils.JsfUtils;
+import net.ent.etrs.ski.view.station.StationListeBean;
 import org.apache.commons.collections4.IterableUtils;
 import org.primefaces.model.file.UploadedFile;
 
@@ -41,11 +42,24 @@ public class ForfaitFicheBean implements Serializable {
     @Inject
     private FacadePiste facadePiste;
 
+    @PostConstruct
+    void init()  {
+        try {
+            if (FacesContext.getCurrentInstance().getExternalContext().getFlash().get(ForfaitListeBean.FLASH) != null) {
+                Long id = (Long) FacesContext.getCurrentInstance().getExternalContext().getFlash().get(ForfaitListeBean.FLASH);
+                this.forfait = this.facadeForfait.find(id).get();
+            }
+        } catch (BusinessException e) {
+            JsfUtils.sendMessage(FacesMessage.SEVERITY_ERROR,"Erreur modification metier");
+        }
+
+    }
+
 
     public void valider()  {
         try{
             this.facadeForfait.save(this.forfait);
-            JsfUtils.sendMessage(null, FacesMessage.SEVERITY_INFO, "La station a bien été enregistré !");
+            JsfUtils.sendMessage(null, FacesMessage.SEVERITY_INFO, "Le forfait a bien été enregistré !");
         } catch (Exception | BusinessException e) {
             JsfUtils.sendMessage(FacesMessage.SEVERITY_ERROR,"Erreur sauvegarde metier");
         }
@@ -62,7 +76,7 @@ public class ForfaitFicheBean implements Serializable {
         }
         catch (BusinessException e)
         {
-            JsfUtils.sendMessage(FacesMessage.SEVERITY_ERROR,"Erreur chargement pistes");
+            JsfUtils.sendMessage(FacesMessage.SEVERITY_ERROR,"Erreur chargement forfait");
         }
         return retour;
     }

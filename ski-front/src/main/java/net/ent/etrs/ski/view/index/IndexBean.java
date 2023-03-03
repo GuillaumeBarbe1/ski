@@ -36,7 +36,6 @@ public class IndexBean implements Serializable
     
     @PostConstruct
     public void init() throws BusinessException {
-        System.out.println("PASS");
     }
 
     public List<Station> getLstStations()
@@ -48,7 +47,7 @@ public class IndexBean implements Serializable
         }
         catch (BusinessException e)
         {
-            JsfUtils.sendMessage(FacesMessage.SEVERITY_ERROR,"Erreur de chargement des stations");
+            JsfUtils.sendMessage(FacesMessage.SEVERITY_ERROR,"Erreur de chargement");
         }
         return retour;
     }

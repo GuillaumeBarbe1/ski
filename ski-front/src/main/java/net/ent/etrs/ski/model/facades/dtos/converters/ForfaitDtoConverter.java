@@ -5,11 +5,14 @@ import lombok.NoArgsConstructor;
 import net.ent.etrs.ski.exceptions.BusinessException;
 import net.ent.etrs.ski.model.entities.Forfait;
 import net.ent.etrs.ski.model.entities.Piste;
+import net.ent.etrs.ski.model.entities.Station;
 import net.ent.etrs.ski.model.facades.FacadePiste;
 import net.ent.etrs.ski.model.facades.dtos.ForfaitDto;
+import net.ent.etrs.ski.model.facades.dtos.StationDto;
 import net.ent.etrs.ski.utils.CDIUtils;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,6 +37,14 @@ public class ForfaitDtoConverter {
         return forfaits.stream()
                 .map(ForfaitDtoConverter::toDto)
                 .collect(Collectors.toList());
+    }
+
+    public static List<Forfait> toEntityList(List<ForfaitDto> forfaits) throws BusinessException {
+        List<Forfait> forfaits2 = new ArrayList<>();
+        for(ForfaitDto f : forfaits){
+            forfaits2.add(ForfaitDtoConverter.toEntity(f));
+        }
+        return forfaits2;
     }
 
     public static Forfait toEntity(ForfaitDto forfaitDto) throws BusinessException {

@@ -44,10 +44,15 @@ public class StationFicheBean implements Serializable {
 
     @PostConstruct
     void init()  {
-        if (FacesContext.getCurrentInstance().getExternalContext().getFlash().get(StationListeBean.FLASH) != null) {
-            Long id = (Long) FacesContext.getCurrentInstance().getExternalContext().getFlash().get(StationListeBean.FLASH);
-            this.station = this.facadeStation.findByIdWithPistes(id).get();
+        try {
+            if (FacesContext.getCurrentInstance().getExternalContext().getFlash().get(StationListeBean.FLASH) != null) {
+                Long id = (Long) FacesContext.getCurrentInstance().getExternalContext().getFlash().get(StationListeBean.FLASH);
+                this.station = this.facadeStation.find(id).get();
+            }
+        } catch (BusinessException e) {
+            JsfUtils.sendMessage(FacesMessage.SEVERITY_ERROR,"Erreur modification metier");
         }
+
     }
 
     public void valider()  {
@@ -68,7 +73,7 @@ public class StationFicheBean implements Serializable {
     public List<Piste> getPistesDispo(){
         List<Piste> list = new ArrayList<>(this.station.getPistes());
         try {
-            list.addAll(IterableUtils.toList(this.facadePiste.findAllDispo()));
+            list.addAll(IterableUtils.toList(this.facadePiste.findAll()));
         } catch (BusinessException e) {
             JsfUtils.sendMessage(FacesMessage.SEVERITY_ERROR,"Erreur chargement metier");
         }

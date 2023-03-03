@@ -2,10 +2,12 @@ package net.ent.etrs.ski.view.piste;
 
 import lombok.Getter;
 import net.ent.etrs.ski.exceptions.BusinessException;
+import net.ent.etrs.ski.model.entities.Piste;
 import net.ent.etrs.ski.model.entities.references.Etat;
 import net.ent.etrs.ski.model.entities.references.Niveau;
 import net.ent.etrs.ski.model.facades.FacadePiste;
 import net.ent.etrs.ski.utils.JsfUtils;
+import org.apache.commons.collections4.IterableUtils;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -28,11 +30,16 @@ public class PisteListeBean implements Serializable {
     private FacadePiste facadePiste;
     
     @Getter
-    @Inject
-    private LazyDataModelPiste pisteList;
+    private List<Piste> pisteList;
     
     @PostConstruct
     public void init() {
+        try {
+            this.pisteList = IterableUtils.toList(this.facadePiste.findAll());
+        } catch (BusinessException e)
+        {
+            JsfUtils.sendMessage(FacesMessage.SEVERITY_ERROR, "Erreur chargement metier");
+        }
     }
 
     public void supprimer(Long id) throws Exception {

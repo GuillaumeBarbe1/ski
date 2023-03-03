@@ -11,7 +11,7 @@
 
          <p:commandButton icon="pi pi-plus"
                           styleClass="ui-button-primary" value="Créer" immediate="true" action="/pages/piste/fiche.xhtml?faces-redirect=true" />
-         <p:dataTable value="#{pisteListeBean.pisteList}" var="p"  widgetVar="wv" lazy="true"
+         <p:dataTable value="#{pisteListeBean.pisteList}" var="p"  widgetVar="wv"
                       currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
             paginator="true" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rows="10" rowsPerPageTemplate="5,10,15"
          >

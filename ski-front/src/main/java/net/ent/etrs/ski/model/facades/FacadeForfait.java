@@ -3,6 +3,9 @@ package net.ent.etrs.ski.model.facades;
 import net.ent.etrs.ski.exceptions.BusinessException;
 import net.ent.etrs.ski.model.entities.Forfait;
 import net.ent.etrs.ski.model.facades.dtos.ForfaitDto;
+import net.ent.etrs.ski.model.facades.dtos.PisteDto;
+import net.ent.etrs.ski.model.facades.dtos.converters.ForfaitDtoConverter;
+import net.ent.etrs.ski.model.facades.dtos.converters.PisteDtoConverter;
 
 import javax.ws.rs.NotFoundException;
 import javax.ws.rs.ServerErrorException;
@@ -10,6 +13,7 @@ import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,8 +28,7 @@ public class FacadeForfait extends AbstractFacade {
                     .path(String.valueOf(id))
                     .request(MediaType.APPLICATION_JSON)
                     .get(ForfaitDto.class);
-            System.out.println(forfaitDto);
-            return null;
+            return Optional.of(ForfaitDtoConverter.toEntity(forfaitDto));
         } catch (NotFoundException e) {
             throw new BusinessException("Aucun forfait pour cet identifiant");
         } catch (ServerErrorException e) {
@@ -38,9 +41,7 @@ public class FacadeForfait extends AbstractFacade {
                 .target(URL_FORFAIT)
                 .request(MediaType.APPLICATION_JSON)
                 .get(new GenericType<List<ForfaitDto>>(){});
-        
-        forfaitDtoList.forEach(System.out::println);
-        return null;
+        return ForfaitDtoConverter.toEntityList(forfaitDtoList);
     }
     
     public Optional<Forfait> save(Forfait forfait) throws BusinessException {
@@ -53,8 +54,7 @@ public class FacadeForfait extends AbstractFacade {
         if (resp.getStatus() == Response.Status.INTERNAL_SERVER_ERROR.getStatusCode()) {
             throw new BusinessException("Erreur lors de la création du forfait");
         }
-        System.out.println(resp.readEntity(ForfaitDto.class));
-        return null;
+        return Optional.of(ForfaitDtoConverter.toEntity(resp.readEntity(ForfaitDto.class)));
     }
     
     public Optional<Forfait> update(Forfait forfait) throws BusinessException {
@@ -72,8 +72,7 @@ public class FacadeForfait extends AbstractFacade {
         if (resp.getStatus() == Response.Status.NOT_FOUND.getStatusCode()) {
             throw new BusinessException("Aucun forfait pour cet identifiant");
         }
-        System.out.println(resp.readEntity(ForfaitDto.class));
-        return null;
+        return Optional.of(ForfaitDtoConverter.toEntity(resp.readEntity(ForfaitDto.class)));
     }
     
     public void delete(Long id) throws BusinessException {

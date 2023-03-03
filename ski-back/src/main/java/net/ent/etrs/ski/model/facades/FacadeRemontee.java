@@ -70,10 +70,10 @@ public class FacadeRemontee
             throw new BusinessException(e);
         }
     }
-    
-    public Iterable<Remontee> findAllByPisteId(Long idPiste) throws BusinessException {
+
+    public Iterable<Remontee> findAllByPiste(Long id) throws BusinessException {
         try {
-            return this.daoRemontee.findAllByPisteId(idPiste);
+            return this.daoRemontee.findAllByPiste(id);
         } catch (DaoException e) {
             throw new BusinessException(e);
         }

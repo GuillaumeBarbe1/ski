@@ -11,6 +11,6 @@ import java.util.Optional;
 
 public interface DaoRemontee extends BaseDao<Remontee, Serializable> {
     List<Remontee> findAllDispo() throws DaoException;
-    
-    Iterable<Remontee> findAllByPisteId(Long idPiste) throws DaoException;
+
+    Iterable<Remontee> findAllByPiste(Long id) throws DaoException;
 }

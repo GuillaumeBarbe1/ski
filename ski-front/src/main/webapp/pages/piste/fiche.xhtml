@@ -37,7 +37,7 @@
                <p:inputText id="pente" value="#{pisteFicheBean.piste.penteMoy}" />
                <p:message for="pente"/>
 
-               <p:outputLabel for="remontees" value="Pistes : "/>
+               <p:outputLabel for="remontees" value="Remontées : "/>
                <p:selectManyMenu id="remontees" value="#{pisteFicheBean.piste.remontees}" showCheckbox="true" converter="#{genericConverter}" >
                   <f:attribute name="collectionType" value="java.util.ArrayList" />
                   <f:selectItems value="#{pisteFicheBean.remonteesDispo}" var="r" itemValue="#{r}" itemLabel="#{r.nom}" />

@@ -8,9 +8,11 @@ import net.ent.etrs.ski.model.entities.Piste;
 import net.ent.etrs.ski.model.entities.Station;
 import net.ent.etrs.ski.model.facades.FacadeForfait;
 import net.ent.etrs.ski.model.facades.FacadePiste;
+import net.ent.etrs.ski.model.facades.dtos.PisteDto;
 import net.ent.etrs.ski.model.facades.dtos.StationDto;
 import net.ent.etrs.ski.utils.CDIUtils;
 
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -42,6 +44,14 @@ public class StationDtoConverter {
         return stations.stream()
                 .map(StationDtoConverter::toDto)
                 .collect(Collectors.toList());
+    }
+
+    public static List<Station> toEntityList(List<StationDto> stations) throws BusinessException {
+        List<Station> stations2 = new ArrayList<>();
+        for(StationDto s : stations){
+            stations2.add(StationDtoConverter.toEntity(s));
+        }
+        return stations2;
     }
     
     public static Station toEntity(StationDto stationDto) throws BusinessException {

@@ -38,19 +38,15 @@ public class FacadeRemontee extends AbstractFacade {
                 .target(URL_REMONTEE)
                 .request(MediaType.APPLICATION_JSON)
                 .get(new GenericType<List<RemonteeDto>>(){});
-
-//        remonteeDtoList.forEach(System.out::println);
         return RemonteeDtoConverter.toEntityList(remonteeDtoList);
     }
-    
-    public Iterable<Remontee> findAllByPisteId(Long id) throws BusinessException {
+
+    public Iterable<Remontee> findAllByPiste(Long id) throws BusinessException {
         List<RemonteeDto> remonteeDtoList = this.client
                 .target(URL_REMONTEE)
                 .queryParam("piste",id)
                 .request(MediaType.APPLICATION_JSON)
                 .get(new GenericType<List<RemonteeDto>>(){});
-
-//        remonteeDtoList.forEach(System.out::println);
         return RemonteeDtoConverter.toEntityList(remonteeDtoList);
     }
     
@@ -63,7 +59,6 @@ public class FacadeRemontee extends AbstractFacade {
         if (resp.getStatus() == Response.Status.INTERNAL_SERVER_ERROR.getStatusCode()) {
             throw new BusinessException("Erreur lors de la création de la remontée");
         }
-//        System.out.println(resp.readEntity(RemonteeDto.class));
         return Optional.of(RemonteeDtoConverter.toEntity(resp.readEntity(RemonteeDto.class)));
     }
 
@@ -82,7 +77,6 @@ public class FacadeRemontee extends AbstractFacade {
         if (resp.getStatus() == Response.Status.NOT_FOUND.getStatusCode()) {
             throw new BusinessException("Aucune remontée pour cet identifiant");
         }
-//        System.out.println(resp.readEntity(RemonteeDto.class));
         return Optional.of(RemonteeDtoConverter.toEntity(resp.readEntity(RemonteeDto.class)));
     }
     
