@@ -30,16 +30,17 @@ public class PisteListeBean implements Serializable {
     private FacadePiste facadePiste;
     
     @Getter
-    private List<Piste> pisteList;
+    @Inject
+    private LazyDataModelPiste pisteList;
     
     @PostConstruct
     public void init() {
-        try {
-            this.pisteList = IterableUtils.toList(this.facadePiste.findAll());
-        } catch (BusinessException e)
-        {
-            JsfUtils.sendMessage(FacesMessage.SEVERITY_ERROR, "Erreur chargement metier");
-        }
+//        try {
+//            this.pisteList = IterableUtils.toList(this.facadePiste.findAll());
+//        } catch (BusinessException e)
+//        {
+//            JsfUtils.sendMessage(FacesMessage.SEVERITY_ERROR, "Erreur chargement metier");
+//        }
     }
 
     public void supprimer(Long id) throws Exception {

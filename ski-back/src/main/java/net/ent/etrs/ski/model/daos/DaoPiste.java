@@ -2,8 +2,6 @@ package net.ent.etrs.ski.model.daos;
 
 import net.ent.etrs.ski.exceptions.DaoException;
 import net.ent.etrs.ski.model.entities.Piste;
-import org.primefaces.model.FilterMeta;
-import org.primefaces.model.SortMeta;
 
 import java.io.Serializable;
 import java.util.List;

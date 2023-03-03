@@ -12,6 +12,7 @@ import javax.ws.rs.NotFoundException;
 import javax.ws.rs.ServerErrorException;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.GenericType;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
@@ -104,13 +105,13 @@ public class FacadePiste extends AbstractFacade {
     }
     
     public List<Piste> load(int first, int pageSize, Map<String, SortMeta> sortBy, Map<String, FilterMeta> filterBy) throws BusinessException {
-        String sorted = LazyDataModelUtil.sortedByMapToStr(sortBy);
-        String filter = LazyDataModelUtil.filterByMapToStr(filterBy);
+        String sorted = LazyDataModelUtil.sortedMapToStr(sortBy);
+        String filter = LazyDataModelUtil.filterMapToStr(filterBy);
         List<PisteDto> pisteDtoList = this.client
                 .target(URL_PISTE)
                 .queryParam("first", first)
                 .queryParam("pageSize", pageSize)
-                .queryParam("sortBy", sorted)
+                .queryParam("sortedBy", sorted)
                 .queryParam("filterBy", filter)
                 .request(MediaType.APPLICATION_JSON)
                 .get(new GenericType<List<PisteDto>>(){});
@@ -118,11 +119,11 @@ public class FacadePiste extends AbstractFacade {
     }
     
     public int count(Map<String, FilterMeta> filterBy) {
-        String filter = LazyDataModelUtil.filterByMapToStr(filterBy);
+        String filter = LazyDataModelUtil.filterMapToStr(filterBy);
         return this.client
                 .target(URL_PISTE)
                 .path("count")
-                .queryParam("filterBy",filter)
+                .queryParam("filterBy", filter)
                 .request(MediaType.APPLICATION_JSON)
                 .get(Integer.class);
     }

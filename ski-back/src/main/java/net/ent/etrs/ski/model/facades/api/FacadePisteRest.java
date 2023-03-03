@@ -16,6 +16,7 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -30,15 +31,19 @@ public class FacadePisteRest {
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     public Response findAll(@QueryParam("first") @DefaultValue("1") Integer first,
-                            @QueryParam("pageSize") @DefaultValue("10") Integer pageSize,
-                            @QueryParam("sortedBy") @DefaultValue("nom:ASC") String sortedBy,
-                            @QueryParam("filterBy") @DefaultValue("") String filterBy){
-        Map<String, String> filter = Utils.strToMap(filterBy);
-        Map<String, String> sorted = Utils.strToMap(sortedBy);
+                            @QueryParam("pageSize") @DefaultValue("10")  Integer pageSize,
+                            @QueryParam("sortedBy") @DefaultValue("nom:ASC")  String sortedBy,
+                            @QueryParam("filterBy") @DefaultValue("") String filterBy) {
+        try {
+            Map<String, String> filter = Utils.strToMap(filterBy);
+            Map<String, String> sorted = Utils.strToMap(sortedBy);
+            
+            List<Piste> list = IterableUtils.toList(this.facadePiste.load(first, pageSize, sorted, filter));
 
-        List<Piste> list = IterableUtils.toList(this.facadePiste.load(first, pageSize, filter, sorted));
-
-        return Response.ok(PisteDtoConverter.toDtoList(list)).build();
+            return Response.ok(PisteDtoConverter.toDtoList(list)).build();
+        } catch (Exception e) {
+            return Response.serverError().build();
+        }
     }
 
     @GET
@@ -104,6 +109,20 @@ public class FacadePisteRest {
             this.facadePiste.delete(id);
             return Response.status(Response.Status.NO_CONTENT).build();
         } catch (BusinessException e) {
+            return Response.serverError().build();
+        }
+    }
+    
+    @GET
+    @Path("/count")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response count(
+            @QueryParam("filterBy") @DefaultValue("") String filterBy) {
+        try {
+            Map<String, String> filter = Utils.strToMap(filterBy);
+            int count = this.facadePiste.count(filter);
+            return Response.ok(count).build();
+        } catch (Exception e) {
             return Response.serverError().build();
         }
     }

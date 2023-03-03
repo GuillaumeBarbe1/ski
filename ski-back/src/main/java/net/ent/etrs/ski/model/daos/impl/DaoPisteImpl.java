@@ -78,7 +78,7 @@ public class DaoPisteImpl extends JpaBaseDao<Piste, Serializable> implements Dao
         if (!sortBy.isEmpty()) {
             sql += " ORDER BY ";
             for(Map.Entry<String, String> sort : sortBy.entrySet()) {
-                sql += " p." + sort.getValue() + " " + sort.getValue() + ",";
+                sql += " p." + sort.getKey()+ " " + sort.getValue() + ",";
             }
             sql = sql.substring(0, sql.length() -1);
         } else {
