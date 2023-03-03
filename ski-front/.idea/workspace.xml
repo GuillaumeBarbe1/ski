@@ -11,7 +11,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="112392dd-a81c-486a-a8e7-3945d084aef0" name="Changes" comment="changement count load Piste">
-      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/impl/DaoPisteImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/impl/DaoPisteImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ski-back/src/main/resources/log4j2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/DaoForfait.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/DaoForfait.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/DaoRemontee.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/DaoRemontee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/DaoStation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/DaoStation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/impl/DaoForfaitImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/impl/DaoForfaitImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/impl/DaoRemonteeImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/impl/DaoRemonteeImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/impl/DaoStationImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/impl/DaoStationImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/impl/DaoUserImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/impl/DaoUserImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/FacadeForfait.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/FacadeForfait.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/FacadeRemontee.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/FacadeRemontee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/FacadeStation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/FacadeStation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/FacadeUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/FacadeUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/ski_back_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/ski_back_war_exploded.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,6 +34,9 @@
   </component>
   <component name="CodeStyleSettingsInfer">
     <option name="done" value="true" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
   </component>
   <component name="ComposerSettings">
     <execution />
@@ -36,6 +52,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -63,6 +82,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="OptimizeOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
@@ -78,7 +100,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "E:/UV3/Cours JEE/TP/biblio/bibliofront-master",
+    "last_opened_file_path": "E:/UV3/Cours JEE/Tests/BARBE_KL16JAVAEE_TEST1/controlejee",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -86,7 +108,8 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "editing.templates",
+    "rearrange.code.on.save": "true",
+    "settings.editor.selected.configurable": "actions.on.save",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -95,11 +118,11 @@
       <recent name="net.ent.etrs.ski.exceptions" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\UV3\Cours JEE\TP\SkiRest\ski-back\src\main\resources" />
       <recent name="E:\UV3\Cours JEE\TP\SkiRest\ski-front\src\main\java\net\ent\etrs\ski\utils" />
       <recent name="E:\UV3\Cours JEE\TP\SkiRest\ski-back\src\main\java\net\ent\etrs\ski\utils" />
       <recent name="D:\Cours\UV3\JavaEE\TP2\ski-front\src\main\java\net\ent\etrs\ski\model\facades\dtos" />
       <recent name="P:\Ecrit_pour\kevin.ledeme\WS\ski_falgat\ski-rest\ski-front\src\main\java\net\ent\etrs\ski\model\facades\dtos" />
-      <recent name="E:\KL16 -RIA\ski\src\main\java\net\ent\etrs\ski\view\remontee" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\KL16 -RIA\ski\src\main\webapp\resources\img" />
@@ -259,7 +282,7 @@
       <workItem from="1677682158483" duration="2220000" />
       <workItem from="1677685390238" duration="1346000" />
       <workItem from="1677749644094" duration="9906000" />
-      <workItem from="1677826953725" duration="6162000" />
+      <workItem from="1677826953725" duration="9969000" />
     </task>
     <task id="LOCAL-00001" summary="changement count load Piste">
       <created>1677771528191</created>
@@ -303,7 +326,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677832169612</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="changement count load Piste">
+      <created>1677833399073</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1677833399073</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

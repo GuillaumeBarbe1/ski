@@ -14,7 +14,6 @@ import java.util.Optional;
 
 public class DaoUserImpl extends JpaBaseDao<User, Serializable> implements DaoUser {
 
-
     @Override
     public User findByLoginPasswd(String login, String password) throws DaoException {
 

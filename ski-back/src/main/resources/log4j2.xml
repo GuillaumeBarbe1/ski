@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <!-- Logging Properties -->
+    <Properties>
+        <Property name="LOG_PATTERN">%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ} %p %m%n</Property>
+        <Property name="APP_LOG_ROOT">d:/logs</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="consoleAppender" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+
+        <Console name="consoleAppender2" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+
+        <File name="fileAppender" fileName="logs/journal.log" immediateFlush="true" append="true">
+            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
+
+        <File name="fileAppender2" fileName="${APP_LOG_ROOT}/journal.log" immediateFlush="true" append="true">
+            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
+    </Appenders>
+
+    <Loggers>
+        <Root level="debug">
+            <AppenderRef ref="consoleAppender"/>
+        </Root>
+        <Logger name="LoggerInit" level="info" additivity="false">
+            <AppenderRef ref="fileAppender"/>
+            <AppenderRef ref="consoleAppender"/>
+        </Logger>
+        <Logger name="LoggerInit2" level="info" additivity="false">
+            <AppenderRef ref="fileAppender"/>
+        </Logger>
+        <Logger name="org.hibernate" additivity="false" level="warn">
+            <AppenderRef ref="consoleAppender"/>
+        </Logger>
+        <Logger name="org.hibernate.engine" additivity="false" level="debug">
+            <AppenderRef ref="consoleAppender"/>
+        </Logger>
+        <Logger name="org.hibernate.SQL" additivity="false" level="debug">
+            <AppenderRef ref="consoleAppender"/>
+        </Logger>
+
+    </Loggers>
+</Configuration>
