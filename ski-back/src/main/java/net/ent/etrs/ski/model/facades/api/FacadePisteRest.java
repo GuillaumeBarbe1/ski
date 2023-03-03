@@ -9,6 +9,7 @@ import net.ent.etrs.ski.model.facades.api.dtos.PisteDto;
 import net.ent.etrs.ski.model.facades.api.dtos.StationDto;
 import net.ent.etrs.ski.model.facades.api.dtos.converters.PisteDtoConverter;
 import net.ent.etrs.ski.model.facades.api.dtos.converters.StationDtoConverter;
+import net.ent.etrs.ski.utils.Utils;
 import org.apache.commons.collections4.IterableUtils;
 
 import javax.inject.Inject;
@@ -16,6 +17,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Path("/pistes")
@@ -27,14 +29,16 @@ public class FacadePisteRest {
     @GET
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findAll() {
-        try {
-            List<Piste> list = IterableUtils.toList(this.facadePiste.findAll());
+    public Response findAll(@QueryParam("first") @DefaultValue("1") Integer first,
+                            @QueryParam("pageSize") @DefaultValue("10") Integer pageSize,
+                            @QueryParam("sortedBy") @DefaultValue("nom:ASC") String sortedBy,
+                            @QueryParam("filterBy") @DefaultValue("") String filterBy){
+        Map<String, String> filter = Utils.strToMap(filterBy);
+        Map<String, String> sorted = Utils.strToMap(sortedBy);
 
-            return Response.ok(PisteDtoConverter.toDtoList(list)).build();
-        } catch (BusinessException e) {
-            return Response.serverError().build();
-        }
+        List<Piste> list = IterableUtils.toList(this.facadePiste.load(first, pageSize, filter, sorted));
+
+        return Response.ok(PisteDtoConverter.toDtoList(list)).build();
     }
 
     @GET

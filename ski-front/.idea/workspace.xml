@@ -11,8 +11,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="112392dd-a81c-486a-a8e7-3945d084aef0" name="Changes" comment="changement count load Piste">
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/model/facades/FacadePiste.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/model/facades/FacadePiste.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/utils/LazyDataUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/utils/LazyDataModelUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/DaoPiste.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/DaoPiste.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/impl/DaoPisteImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/impl/DaoPisteImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/FacadePiste.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/FacadePiste.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/FacadePisteRest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/FacadePisteRest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,11 +115,11 @@
       <recent name="net.ent.etrs.ski.exceptions" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="net.ent.etrs.ski.utils" />
       <recent name="net.ent.etrs.ski.model.facades.dtos" />
       <recent name="net.ent.etrs.ski.model.daos.impl" />
       <recent name="net.ent.etrs.ski.model.daos" />
       <recent name="net.ent.etrs.ski.model.facades" />
-      <recent name="net.ent.etrs.ski.model.entities" />
     </key>
   </component>
   <component name="RunManager">
@@ -259,7 +263,7 @@
       <workItem from="1677682158483" duration="2220000" />
       <workItem from="1677685390238" duration="1346000" />
       <workItem from="1677749644094" duration="9906000" />
-      <workItem from="1677826953725" duration="3877000" />
+      <workItem from="1677826953725" duration="4891000" />
     </task>
     <task id="LOCAL-00001" summary="changement count load Piste">
       <created>1677771528191</created>
@@ -289,7 +293,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677830623788</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="changement count load Piste">
+      <created>1677831328055</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1677831328055</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

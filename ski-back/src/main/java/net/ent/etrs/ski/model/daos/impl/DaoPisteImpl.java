@@ -25,7 +25,7 @@ public class DaoPisteImpl extends JpaBaseDao<Piste, Serializable> implements Dao
     }
     
     @Override
-    public List<Piste> load(int first, int pageSize, Map<String, SortMeta> sortBy, Map<String, FilterMeta> filterBy) {
+    public List<Piste> load(int first, int pageSize, Map<String, String> sortBy, Map<String, String> filterBy) {
         String sql = "SELECT p FROM Piste p WHERE 1=1 ";
         
         String nom = null;
@@ -35,23 +35,23 @@ public class DaoPisteImpl extends JpaBaseDao<Piste, Serializable> implements Dao
         Double penteMoy = null;
         
         if(filterBy.containsKey("nom")) {
-            nom = (String) filterBy.get("nom").getFilterValue();
+            nom = filterBy.get("nom");
         }
     
         if(filterBy.containsKey("etat")) {
-           etat = Etat.valueOf((String) filterBy.get("etat").getFilterValue());
+           etat = Etat.valueOf(filterBy.get("etat"));
         }
     
         if(filterBy.containsKey("niveau")) {
-            niveau = Niveau.valueOf((String) filterBy.get("niveau").getFilterValue());
+            niveau = Niveau.valueOf(filterBy.get("niveau"));
         }
     
         if(filterBy.containsKey("longueur")) {
-            longueur = Integer.valueOf((String) filterBy.get("longueur").getFilterValue());
+            longueur = Integer.valueOf(filterBy.get("longueur"));
         }
     
         if(filterBy.containsKey("penteMoy")) {
-            penteMoy = Double.valueOf((String) filterBy.get("penteMoy").getFilterValue());
+            penteMoy = Double.valueOf(filterBy.get("penteMoy"));
         }
         
         if (nom != null) {
@@ -77,8 +77,8 @@ public class DaoPisteImpl extends JpaBaseDao<Piste, Serializable> implements Dao
     
         if (!sortBy.isEmpty()) {
             sql += " ORDER BY ";
-            for(Map.Entry<String, SortMeta> sort : sortBy.entrySet()) {
-                sql += " p." + sort.getValue().getField() + " " + (sort.getValue().getOrder().equals(SortOrder.ASCENDING) ? "ASC" : "DESC") + ",";
+            for(Map.Entry<String, String> sort : sortBy.entrySet()) {
+                sql += " p." + sort.getValue() + " " + sort.getValue() + ",";
             }
             sql = sql.substring(0, sql.length() -1);
         } else {
@@ -114,7 +114,7 @@ public class DaoPisteImpl extends JpaBaseDao<Piste, Serializable> implements Dao
     }
     
     @Override
-    public int count(Map<String, FilterMeta> filterBy) {
+    public int count(Map<String, String> filterBy) {
         String sql = "SELECT COUNT(p) FROM Piste p WHERE 1=1 ";
     
         String nom = null;
@@ -124,23 +124,23 @@ public class DaoPisteImpl extends JpaBaseDao<Piste, Serializable> implements Dao
         Double penteMoy = null;
     
         if(filterBy.containsKey("nom")) {
-            nom = (String) filterBy.get("nom").getFilterValue();
+            nom = filterBy.get("nom");
         }
     
         if(filterBy.containsKey("etat")) {
-            etat =  Etat.valueOf((String) filterBy.get("etat").getFilterValue());
+            etat =  Etat.valueOf(filterBy.get("etat"));
         }
     
         if(filterBy.containsKey("niveau")) {
-            niveau = Niveau.valueOf((String) filterBy.get("niveau").getFilterValue());
+            niveau = Niveau.valueOf(filterBy.get("niveau"));
         }
     
         if(filterBy.containsKey("longueur")) {
-            longueur = Integer.valueOf((String) filterBy.get("longueur").getFilterValue());
+            longueur = Integer.valueOf(filterBy.get("longueur"));
         }
     
         if(filterBy.containsKey("penteMoy")) {
-            penteMoy = Double.valueOf((String) filterBy.get("penteMoy").getFilterValue());
+            penteMoy = Double.valueOf(filterBy.get("penteMoy"));
         }
     
         if (nom != null) {

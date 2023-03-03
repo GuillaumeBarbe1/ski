@@ -12,7 +12,7 @@ import java.util.Map;
 public interface DaoPiste extends BaseDao<Piste, Serializable> {
     List<Piste> findAllDispo() throws DaoException;
     
-    List<Piste> load(int first, int pageSize, Map<String, SortMeta> sortBy, Map<String, FilterMeta> filterBy);
+    List<Piste> load(int first, int pageSize, Map<String, String> sortBy, Map<String, String> filterBy);
     
-    int count(Map<String, FilterMeta> filterBy);
+    int count(Map<String, String> filterBy);
 }
