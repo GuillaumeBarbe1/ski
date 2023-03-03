@@ -4,7 +4,7 @@ import net.ent.etrs.ski.exceptions.BusinessException;
 import net.ent.etrs.ski.model.entities.Piste;
 import net.ent.etrs.ski.model.facades.dtos.PisteDto;
 import net.ent.etrs.ski.model.facades.dtos.converters.PisteDtoConverter;
-import net.ent.etrs.ski.utils.LazyDataUtil;
+import net.ent.etrs.ski.utils.LazyDataModelUtil;
 import org.primefaces.model.FilterMeta;
 import org.primefaces.model.SortMeta;
 
@@ -103,11 +103,27 @@ public class FacadePiste extends AbstractFacade {
         return null;
     }
     
-    public List<Piste> load(int first, int pageSize, Map<String, SortMeta> sortBy, Map<String, FilterMeta> filterBy) {
-        return null;
+    public List<Piste> load(int first, int pageSize, Map<String, SortMeta> sortBy, Map<String, FilterMeta> filterBy) throws BusinessException {
+        String sorted = LazyDataModelUtil.sortedByMapToStr(sortBy);
+        String filter = LazyDataModelUtil.filterByMapToStr(filterBy);
+        List<PisteDto> pisteDtoList = this.client
+                .target(URL_PISTE)
+                .queryParam("first", first)
+                .queryParam("pageSize", pageSize)
+                .queryParam("sortBy", sorted)
+                .queryParam("filterBy", filter)
+                .request(MediaType.APPLICATION_JSON)
+                .get(new GenericType<List<PisteDto>>(){});
+        return PisteDtoConverter.toEntityList(pisteDtoList);
     }
     
     public int count(Map<String, FilterMeta> filterBy) {
-        return 0;
+        String filter = LazyDataModelUtil.filterByMapToStr(filterBy);
+        return this.client
+                .target(URL_PISTE)
+                .path("count")
+                .queryParam("filterBy",filter)
+                .request(MediaType.APPLICATION_JSON)
+                .get(Integer.class);
     }
 }
