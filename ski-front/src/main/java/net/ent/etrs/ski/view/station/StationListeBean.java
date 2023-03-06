@@ -3,11 +3,9 @@ package net.ent.etrs.ski.view.station;
 
 import lombok.Getter;
 import net.ent.etrs.ski.exceptions.BusinessException;
-import net.ent.etrs.ski.model.entities.Station;
 import net.ent.etrs.ski.model.entities.references.Etat;
 import net.ent.etrs.ski.model.facades.FacadeStation;
 import net.ent.etrs.ski.utils.JsfUtils;
-import org.apache.commons.collections4.IterableUtils;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -29,16 +27,13 @@ public class StationListeBean implements Serializable {
     private FacadeStation facadeStation;
 
     @Getter
-    private List<Station> stationList;
+    @Inject
+    private LazyDataModelStation stationList;
+
 
     @PostConstruct
     public void init() {
-        try {
-            this.stationList = IterableUtils.toList(this.facadeStation.findAll());
-        } catch (BusinessException e)
-        {
-            JsfUtils.sendMessage(FacesMessage.SEVERITY_ERROR, "Erreur chargement metier");
-        }
+
     }
 
     public void supprimer(Long id) throws Exception {
@@ -55,8 +50,7 @@ public class StationListeBean implements Serializable {
         FacesContext.getCurrentInstance().getExternalContext().getFlash().put(this.FLASH, id);
     }
 
-    public List<Etat> getEtats()
-    {
+    public List<Etat> getEtats() {
         return Arrays.asList(Etat.values());
     }
 }
