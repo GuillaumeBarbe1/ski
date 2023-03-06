@@ -73,20 +73,19 @@ public class FacadeForfait {
     }
 
     public void deleteAll(List<Forfait> forfaits) throws BusinessException {
-        for(Forfait p : forfaits){
+        for (Forfait p : forfaits) {
             this.delete(p.getId());
         }
     }
 
 
-    public List<Forfait> load(int first, int pageSize, Map<String, String> sortBy, Map<String, String> filterBy) {
+    public List<Forfait> load(int first, int pageSize, Map<String, String> sortBy, Map<String, String> filterBy) throws BusinessException {
         return this.forfaitDao.load(first, pageSize, sortBy, filterBy);
     }
 
-    public int count(Map<String, String> filterBy) {
+    public int count(Map<String, String> filterBy) throws BusinessException {
         return this.forfaitDao.count(filterBy);
     }
-
 
 
 }

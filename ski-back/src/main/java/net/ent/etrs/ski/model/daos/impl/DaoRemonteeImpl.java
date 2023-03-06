@@ -1,32 +1,19 @@
 package net.ent.etrs.ski.model.daos.impl;
 
-import lombok.Getter;
-import lombok.Setter;
 import net.ent.etrs.ski.exceptions.DaoException;
-import net.ent.etrs.ski.model.daos.DaoForfait;
 import net.ent.etrs.ski.model.daos.DaoRemontee;
 import net.ent.etrs.ski.model.daos.JpaBaseDao;
-import net.ent.etrs.ski.model.entities.Forfait;
-import net.ent.etrs.ski.model.entities.Piste;
 import net.ent.etrs.ski.model.entities.Remontee;
-import net.ent.etrs.ski.model.entities.references.ConstantesModel;
 import net.ent.etrs.ski.model.entities.references.Etat;
 
-import javax.persistence.Column;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.TypedQuery;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
-public class DaoRemonteeImpl extends JpaBaseDao<Remontee, Serializable> implements DaoRemontee
-{
+public class DaoRemonteeImpl extends JpaBaseDao<Remontee, Serializable> implements DaoRemontee {
     @Override
-    public List<Remontee> findAllDispo() throws DaoException
-    {
+    public List<Remontee> findAllDispo() throws DaoException {
         TypedQuery<Remontee> q = this.em.createQuery("SELECT r FROM Remontee r WHERE r NOT IN (" +
                 "SELECT r FROM Piste p INNER JOIN p.remontees r" +
                 ") ORDER BY r.nom DESC", Remontee.class);
@@ -45,7 +32,7 @@ public class DaoRemonteeImpl extends JpaBaseDao<Remontee, Serializable> implemen
     }
 
     @Override
-    public List<Remontee> load(int first, int pageSize, Map<String, String> sortBy, Map<String, String > filterBy) {
+    public List<Remontee> load(int first, int pageSize, Map<String, String> sortBy, Map<String, String> filterBy) {
         String sql = "SELECT p FROM Remontee p WHERE 1=1 ";
 
         String nom = null;
@@ -82,7 +69,7 @@ public class DaoRemonteeImpl extends JpaBaseDao<Remontee, Serializable> implemen
         if (!sortBy.isEmpty()) {
             sql += " ORDER BY ";
             for (Map.Entry<String, String> sort : sortBy.entrySet()) {
-                sql += " l." + sort.getKey() + " " + sort.getValue() + ",";
+                sql += " p." + sort.getKey() + " " + sort.getValue() + ",";
             }
             sql = sql.substring(0, sql.length() - 1);
         } else {

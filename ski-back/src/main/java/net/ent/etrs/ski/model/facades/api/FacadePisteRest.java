@@ -2,13 +2,9 @@ package net.ent.etrs.ski.model.facades.api;
 
 import net.ent.etrs.ski.exceptions.BusinessException;
 import net.ent.etrs.ski.model.entities.Piste;
-import net.ent.etrs.ski.model.entities.Station;
 import net.ent.etrs.ski.model.facades.FacadePiste;
-import net.ent.etrs.ski.model.facades.FacadeStation;
 import net.ent.etrs.ski.model.facades.api.dtos.PisteDto;
-import net.ent.etrs.ski.model.facades.api.dtos.StationDto;
 import net.ent.etrs.ski.model.facades.api.dtos.converters.PisteDtoConverter;
-import net.ent.etrs.ski.model.facades.api.dtos.converters.StationDtoConverter;
 import net.ent.etrs.ski.utils.Utils;
 import org.apache.commons.collections4.IterableUtils;
 
@@ -16,7 +12,6 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -24,6 +19,9 @@ import java.util.Optional;
 @Path("/pistes")
 public class FacadePisteRest {
 
+    //TODO penser à gérer les exception pour load et count dans les dao et facades en mettant ca :
+    // } catch (IllegalArgumentException | PersistenceException e) {
+    //        throw new DaoException(e.getMessage(), e);
     @Inject
     private FacadePiste facadePiste;
 
@@ -31,17 +29,17 @@ public class FacadePisteRest {
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     public Response findAll(@QueryParam("first") @DefaultValue("1") Integer first,
-                            @QueryParam("pageSize") @DefaultValue("10")  Integer pageSize,
-                            @QueryParam("sortedBy") @DefaultValue("nom:ASC")  String sortedBy,
+                            @QueryParam("pageSize") @DefaultValue("10") Integer pageSize,
+                            @QueryParam("sortedBy") @DefaultValue("nom:ASC") String sortedBy,
                             @QueryParam("filterBy") @DefaultValue("") String filterBy) {
         try {
             Map<String, String> filter = Utils.strToMap(filterBy);
             Map<String, String> sorted = Utils.strToMap(sortedBy);
-            
+
             List<Piste> list = IterableUtils.toList(this.facadePiste.load(first, pageSize, sorted, filter));
 
             return Response.ok(PisteDtoConverter.toDtoList(list)).build();
-        } catch (Exception e) {
+        } catch (BusinessException e) {
             return Response.serverError().build();
         }
     }
@@ -112,7 +110,7 @@ public class FacadePisteRest {
             return Response.serverError().build();
         }
     }
-    
+
     @GET
     @Path("/count")
     @Produces(MediaType.APPLICATION_JSON)
@@ -122,7 +120,7 @@ public class FacadePisteRest {
             Map<String, String> filter = Utils.strToMap(filterBy);
             int count = this.facadePiste.count(filter);
             return Response.ok(count).build();
-        } catch (Exception e) {
+        } catch (BusinessException e) {
             return Response.serverError().build();
         }
     }

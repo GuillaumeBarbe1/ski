@@ -1,23 +1,12 @@
 package net.ent.etrs.ski.model.daos.impl;
 
-import lombok.Getter;
-import lombok.Setter;
-import net.ent.etrs.ski.exceptions.DaoException;
 import net.ent.etrs.ski.model.daos.DaoForfait;
-import net.ent.etrs.ski.model.daos.DaoPiste;
 import net.ent.etrs.ski.model.daos.JpaBaseDao;
 import net.ent.etrs.ski.model.entities.Forfait;
-import net.ent.etrs.ski.model.entities.Piste;
-import net.ent.etrs.ski.model.entities.references.Etat;
-import net.ent.etrs.ski.model.entities.references.Niveau;
-import org.primefaces.model.FilterMeta;
-import org.primefaces.model.SortMeta;
-import org.primefaces.model.SortOrder;
 
-import javax.persistence.*;
+import javax.persistence.TypedQuery;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -25,7 +14,7 @@ public class DaoForfaitImpl extends JpaBaseDao<Forfait, Serializable> implements
 
 
     @Override
-    public List<Forfait> load(int first, int pageSize, Map<String, String> sortBy, Map<String, String > filterBy) {
+    public List<Forfait> load(int first, int pageSize, Map<String, String> sortBy, Map<String, String> filterBy) {
         String sql = "SELECT p FROM Forfait p WHERE 1=1 ";
 
         String nom = null;
@@ -55,7 +44,7 @@ public class DaoForfaitImpl extends JpaBaseDao<Forfait, Serializable> implements
         if (!sortBy.isEmpty()) {
             sql += " ORDER BY ";
             for (Map.Entry<String, String> sort : sortBy.entrySet()) {
-                sql += " l." + sort.getKey() + " " + sort.getValue() + ",";
+                sql += " p." + sort.getKey() + " " + sort.getValue() + ",";
             }
             sql = sql.substring(0, sql.length() - 1);
         } else {

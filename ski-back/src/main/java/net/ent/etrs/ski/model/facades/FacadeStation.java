@@ -1,8 +1,8 @@
 package net.ent.etrs.ski.model.facades;
 
 import net.ent.etrs.ski.exceptions.BusinessException;
-import net.ent.etrs.ski.model.daos.DaoStation;
 import net.ent.etrs.ski.exceptions.DaoException;
+import net.ent.etrs.ski.model.daos.DaoStation;
 import net.ent.etrs.ski.model.entities.Station;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -10,7 +10,6 @@ import org.apache.commons.logging.LogFactory;
 import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -18,7 +17,7 @@ import java.util.Optional;
 @Local
 @Stateless
 public class FacadeStation {
-    
+
     private static Log log = LogFactory.getLog("LoggerInit");
 
     @Inject
@@ -74,22 +73,20 @@ public class FacadeStation {
     }
 
     public void deleteAll(List<Station> stations) throws BusinessException {
-        for(Station p : stations){
+        for (Station p : stations) {
             this.delete(p.getId());
         }
     }
 
-    public List<Station> load(int first, int pageSize, Map<String, String> sortBy, Map<String, String> filterBy) {
+    public List<Station> load(int first, int pageSize, Map<String, String> sortBy, Map<String, String> filterBy) throws BusinessException {
         return this.stationDao.load(first, pageSize, sortBy, filterBy);
     }
 
-    public int count(Map<String, String> filterBy) {
+    public int count(Map<String, String> filterBy) throws BusinessException {
         return this.stationDao.count(filterBy);
     }
 
 
-
-    
     public Optional<Station> findByIdWithPistes(Long id) {
         return this.stationDao.findByIdWithPistes(id);
     }

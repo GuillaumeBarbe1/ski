@@ -3,12 +3,9 @@ package net.ent.etrs.ski.model.facades;
 import net.ent.etrs.ski.exceptions.BusinessException;
 import net.ent.etrs.ski.exceptions.DaoException;
 import net.ent.etrs.ski.model.daos.DaoRemontee;
-import net.ent.etrs.ski.model.entities.Piste;
 import net.ent.etrs.ski.model.entities.Remontee;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.primefaces.model.FilterMeta;
-import org.primefaces.model.SortMeta;
 
 import javax.ejb.Local;
 import javax.ejb.Stateless;
@@ -75,7 +72,7 @@ public class FacadeRemontee {
     }
 
     public void deleteAll(List<Remontee> remontees) throws BusinessException {
-        for(Remontee p : remontees){
+        for (Remontee p : remontees) {
             this.delete(p.getId());
         }
     }
@@ -88,15 +85,13 @@ public class FacadeRemontee {
         }
     }
 
-    public List<Remontee> load(int first, int pageSize, Map<String, String> sortBy, Map<String, String> filterBy) {
+    public List<Remontee> load(int first, int pageSize, Map<String, String> sortBy, Map<String, String> filterBy) throws BusinessException {
         return this.remonteeDao.load(first, pageSize, sortBy, filterBy);
     }
 
-    public int count(Map<String, String> filterBy) {
+    public int count(Map<String, String> filterBy) throws BusinessException {
         return this.remonteeDao.count(filterBy);
     }
-
-
 
 
     public Iterable<Remontee> findAllByPiste(Long id) throws BusinessException {

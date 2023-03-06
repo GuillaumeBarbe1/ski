@@ -9,8 +9,8 @@ import java.util.Map;
 
 public interface DaoPiste extends BaseDao<Piste, Serializable> {
     List<Piste> findAllDispo() throws DaoException;
-    
+
     List<Piste> load(int first, int pageSize, Map<String, String> sortBy, Map<String, String> filterBy);
-    
+
     int count(Map<String, String> filterBy);
 }
