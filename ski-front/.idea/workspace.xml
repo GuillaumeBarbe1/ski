@@ -11,11 +11,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="112392dd-a81c-486a-a8e7-3945d084aef0" name="Changes" comment="changement count load Piste">
+      <change afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/FacadeUserRest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/dtos/UserLoginDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/filters/JWTFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/filters/RoleAdminFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/filters/annotations/JWTTokenNeeded.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/filters/annotations/RoleAdmin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/filters/annotations/RoleUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/model/entities/security/UserSecurity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/DaoUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/DaoUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/impl/DaoUserImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/impl/DaoUserImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/entities/references/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/entities/references/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/FacadeUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/FacadeUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/FacadePisteRest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/FacadePisteRest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/ski_back_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/ski_back_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/ski_front_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/ski_front_war_exploded.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/view/forfait/ForfaitListeBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/view/forfait/ForfaitListeBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/view/remontee/RemonteeListeBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/view/remontee/RemonteeListeBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/view/station/StationListeBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/view/station/StationListeBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/remontee/liste.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/remontee/liste.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/view/index/IndexBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/view/index/IndexBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.xhtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,34 +102,35 @@
     <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/UV3/Cours JEE/TP/SkiRest/ski-front&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editing.templates&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "E:/UV3/Cours JEE/TP/SkiRest/ski-back/src/main/java/net/ent/etrs/ski/model/facades/api",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "rearrange.code.on.save": "true",
+    "settings.editor.selected.configurable": "editing.templates",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="net.ent.etrs.ski.exceptions" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\UV3\Cours JEE\TP\SkiRest\ski-back\src\main\java\net\ent\etrs\ski\model\facades\api" />
       <recent name="E:\UV3\Cours JEE\TP\SkiRest\ski-back\src\main\resources" />
       <recent name="E:\UV3\Cours JEE\TP\SkiRest\ski-front\src\main\java\net\ent\etrs\ski\utils" />
       <recent name="E:\UV3\Cours JEE\TP\SkiRest\ski-back\src\main\java\net\ent\etrs\ski\utils" />
       <recent name="D:\Cours\UV3\JavaEE\TP2\ski-front\src\main\java\net\ent\etrs\ski\model\facades\dtos" />
-      <recent name="P:\Ecrit_pour\kevin.ledeme\WS\ski_falgat\ski-rest\ski-front\src\main\java\net\ent\etrs\ski\model\facades\dtos" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\KL16 -RIA\ski\src\main\webapp\resources\img" />
@@ -127,11 +143,11 @@
       <recent name="net.ent.etrs.ski.exceptions" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="net.ent.etrs.ski.model.facades.api.dtos" />
+      <recent name="net.ent.etrs.ski.model.facades.api" />
       <recent name="net.ent.etrs.ski.utils" />
       <recent name="net.ent.etrs.ski.model.facades.dtos" />
       <recent name="net.ent.etrs.ski.model.daos.impl" />
-      <recent name="net.ent.etrs.ski.model.daos" />
-      <recent name="net.ent.etrs.ski.model.facades" />
     </key>
   </component>
   <component name="RunManager">
@@ -278,6 +294,7 @@
       <workItem from="1677826953725" duration="10474000" />
       <workItem from="1677949535837" duration="1712000" />
       <workItem from="1678086607180" duration="5147000" />
+      <workItem from="1678173837180" duration="3097000" />
     </task>
     <task id="LOCAL-00001" summary="changement count load Piste">
       <created>1677771528191</created>

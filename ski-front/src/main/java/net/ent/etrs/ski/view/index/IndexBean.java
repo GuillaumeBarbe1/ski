@@ -1,8 +1,6 @@
 package net.ent.etrs.ski.view.index;
 
-import lombok.Getter;
 import net.ent.etrs.ski.exceptions.BusinessException;
-import net.ent.etrs.ski.model.entities.Piste;
 import net.ent.etrs.ski.model.entities.Station;
 import net.ent.etrs.ski.model.facades.FacadeForfait;
 import net.ent.etrs.ski.model.facades.FacadeStation;
@@ -21,40 +19,31 @@ import java.util.List;
 
 @Named
 @ViewScoped
-public class IndexBean implements Serializable
-{
+public class IndexBean implements Serializable {
 
-    @Getter
-    private String debug = "DEBUG";
-    
     @Inject
     private FacadeStation facadeStation;
 
-    
+
     @Inject
     private FacadeForfait facadeForfait;
-    
+
     @PostConstruct
     public void init() throws BusinessException {
     }
 
-    public List<Station> getLstStations()
-    {
+    public List<Station> getLstStations() {
         List<Station> retour = new ArrayList<>();
-        try
-        {
-            retour=IterableUtils.toList(facadeStation.findAll());
-        }
-        catch (BusinessException e)
-        {
-            JsfUtils.sendMessage(FacesMessage.SEVERITY_ERROR,"Erreur de chargement");
+        try {
+            retour = IterableUtils.toList(facadeStation.findAll());
+        } catch (BusinessException e) {
+            JsfUtils.sendMessage(FacesMessage.SEVERITY_ERROR, "Erreur de chargement");
         }
         return retour;
     }
 
-    public void modifier(Station s)
-    {
-        JsfUtils.putInFlashScope(StationListeBean.FLASH,s.getId());
+    public void modifier(Station s) {
+        JsfUtils.putInFlashScope(StationListeBean.FLASH, s.getId());
     }
 
 }

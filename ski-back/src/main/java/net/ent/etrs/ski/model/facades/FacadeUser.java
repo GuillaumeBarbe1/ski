@@ -87,5 +87,8 @@ public class FacadeUser implements Serializable {
         }
     }
 
+    public Optional<User> findByLogin(String login) throws BusinessException {
+        return userDao.findByLogin(login);
+    }
 
 }

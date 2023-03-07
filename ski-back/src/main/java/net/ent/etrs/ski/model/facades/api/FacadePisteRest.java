@@ -5,6 +5,7 @@ import net.ent.etrs.ski.model.entities.Piste;
 import net.ent.etrs.ski.model.facades.FacadePiste;
 import net.ent.etrs.ski.model.facades.api.dtos.PisteDto;
 import net.ent.etrs.ski.model.facades.api.dtos.converters.PisteDtoConverter;
+import net.ent.etrs.ski.model.facades.api.filters.annotations.JWTTokenNeeded;
 import net.ent.etrs.ski.utils.Utils;
 import org.apache.commons.collections4.IterableUtils;
 
@@ -16,12 +17,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+@JWTTokenNeeded
 @Path("/pistes")
 public class FacadePisteRest {
 
-    //TODO penser à gérer les exception pour load et count dans les dao et facades en mettant ca :
-    // } catch (IllegalArgumentException | PersistenceException e) {
-    //        throw new DaoException(e.getMessage(), e);
     @Inject
     private FacadePiste facadePiste;
 
