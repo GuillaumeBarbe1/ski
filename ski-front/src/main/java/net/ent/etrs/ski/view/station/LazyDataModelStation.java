@@ -1,8 +1,9 @@
 package net.ent.etrs.ski.view.station;
 
-
 import net.ent.etrs.ski.exceptions.BusinessException;
+import net.ent.etrs.ski.model.entities.Piste;
 import net.ent.etrs.ski.model.entities.Station;
+import net.ent.etrs.ski.model.facades.FacadePiste;
 import net.ent.etrs.ski.model.facades.FacadeStation;
 import org.primefaces.model.FilterMeta;
 import org.primefaces.model.LazyDataModel;
@@ -30,4 +31,5 @@ public class LazyDataModelStation extends LazyDataModel<Station> {
     public int count(Map<String, FilterMeta> filterBy) {
         return this.facade.count(filterBy);
     }
+
 }

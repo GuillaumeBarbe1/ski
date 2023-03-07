@@ -1,0 +1,23 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="../../WEB-INF/templates/main.xhtml">
+
+   <ui:define name="titre">Login</ui:define>
+
+   <ui:define name="corps">
+
+      <h:form>
+
+         <p:outputLabel for="login" value="Login"/>
+         <p:inputText id="login" value="#{loginBean.login}" />
+
+         <p:outputLabel for="password" value="Password"/>
+         <p:password id="password" value="#{loginBean.password}" />
+
+         <p:commandButton value="Valider" actionListener="#{loginBean.valider()}" update="@form growl"/>
+      </h:form>
+
+   </ui:define>
+</ui:composition>

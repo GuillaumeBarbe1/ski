@@ -1,0 +1,43 @@
+{
+  "ADMIN" : {
+    "uris": [
+      "/pages/forfait/fiche.xhtml",
+      "/pages/piste/fiche.xhtml",
+      "/pages/remontee/fiche.xhtml",
+      "/pages/station/carte.xhtml",
+      "/pages/station/fiche.xhtml"
+    ],
+    "actions" : [
+      "forfait.create",
+      "forfait.update",
+      "forfait.delete",
+      "piste.create",
+      "piste.update",
+      "piste.delete",
+      "remontee.create",
+      "remontee.update",
+      "remontee.delete",
+      "station.create",
+      "station.update",
+      "station.delete"
+    ]
+  },
+  "USER" : {
+    "uris": [
+      "/pages/forfait/liste.xhtml",
+      "/pages/piste/liste.xhtml",
+      "/pages/remontee/liste.xhtml",
+      "/pages/station/liste.xhtml",
+      "/index.xhtml"
+    ],
+    "actions" : [
+    ]
+  },
+  "ALWAYS" : {
+    "uris" : [
+        "/pages/security/login.xhtml"
+    ],
+    "actions" : [
+    ]
+  }
+}

@@ -2,8 +2,11 @@ package net.ent.etrs.ski.model.facades;
 
 import net.ent.etrs.ski.exceptions.BusinessException;
 import net.ent.etrs.ski.model.entities.Piste;
+import net.ent.etrs.ski.model.entities.Remontee;
 import net.ent.etrs.ski.model.facades.dtos.PisteDto;
+import net.ent.etrs.ski.model.facades.dtos.RemonteeDto;
 import net.ent.etrs.ski.model.facades.dtos.converters.PisteDtoConverter;
+import net.ent.etrs.ski.model.facades.dtos.converters.RemonteeDtoConverter;
 import net.ent.etrs.ski.utils.LazyDataModelUtil;
 import org.primefaces.model.FilterMeta;
 import org.primefaces.model.SortMeta;
@@ -29,6 +32,7 @@ public class FacadePiste extends AbstractFacade {
                     .target(URL_PISTE)
                     .path(String.valueOf(id))
                     .request(MediaType.APPLICATION_JSON)
+                    .header(HttpHeaders.AUTHORIZATION, this.sessionBean.getUser().getToken())
                     .get(PisteDto.class);
             return Optional.of(PisteDtoConverter.toEntity(pisteDto));
         } catch (NotFoundException e) {
@@ -42,6 +46,7 @@ public class FacadePiste extends AbstractFacade {
         List<PisteDto> pisteDtoList = this.client
                 .target(URL_PISTE)
                 .request(MediaType.APPLICATION_JSON)
+                .header(HttpHeaders.AUTHORIZATION, this.sessionBean.getUser().getToken())
                 .get(new GenericType<List<PisteDto>>(){});
         return PisteDtoConverter.toEntityList(pisteDtoList);
     }
@@ -51,6 +56,7 @@ public class FacadePiste extends AbstractFacade {
         Response resp = this.client
                 .target(URL_PISTE)
                 .request(MediaType.APPLICATION_JSON)
+                .header(HttpHeaders.AUTHORIZATION, this.sessionBean.getUser().getToken())
                 .post(Entity.json(dto));
 
         if (resp.getStatus() == Response.Status.INTERNAL_SERVER_ERROR.getStatusCode()) {
@@ -65,6 +71,7 @@ public class FacadePiste extends AbstractFacade {
                 .target(URL_PISTE)
                 .path(String.valueOf(piste.getId()))
                 .request(MediaType.APPLICATION_JSON)
+                .header(HttpHeaders.AUTHORIZATION, this.sessionBean.getUser().getToken())
                 .put(Entity.json(dto));
 
         if (resp.getStatus() == Response.Status.INTERNAL_SERVER_ERROR.getStatusCode()) {
@@ -81,6 +88,7 @@ public class FacadePiste extends AbstractFacade {
         Response resp = this.client.target(URL_PISTE)
                 .path(String.valueOf(id))
                 .request(MediaType.APPLICATION_JSON)
+                .header(HttpHeaders.AUTHORIZATION, this.sessionBean.getUser().getToken())
                 .delete();
 
         if (resp.getStatus() == Response.Status.INTERNAL_SERVER_ERROR.getStatusCode()) {
@@ -103,6 +111,26 @@ public class FacadePiste extends AbstractFacade {
     public List<Piste> findAllDispo() throws BusinessException {
         return null;
     }
+
+    public Iterable<Piste> findAllByStation(Long id) throws BusinessException {
+        List<PisteDto> pisteDtoList = this.client
+                .target(URL_PISTE)
+                .queryParam("station",id)
+                .request(MediaType.APPLICATION_JSON)
+                .header(HttpHeaders.AUTHORIZATION, this.sessionBean.getUser().getToken())
+                .get(new GenericType<List<PisteDto>>(){});
+        return PisteDtoConverter.toEntityList(pisteDtoList);
+    }
+
+    public Iterable<Piste> findAllByForfait(Long id) throws BusinessException {
+        List<PisteDto> pisteDtoList = this.client
+                .target(URL_PISTE)
+                .queryParam("forfait",id)
+                .request(MediaType.APPLICATION_JSON)
+                .header(HttpHeaders.AUTHORIZATION, this.sessionBean.getUser().getToken())
+                .get(new GenericType<List<PisteDto>>(){});
+        return PisteDtoConverter.toEntityList(pisteDtoList);
+    }
     
     public List<Piste> load(int first, int pageSize, Map<String, SortMeta> sortBy, Map<String, FilterMeta> filterBy) throws BusinessException {
         String sorted = LazyDataModelUtil.sortedMapToStr(sortBy);
@@ -114,6 +142,7 @@ public class FacadePiste extends AbstractFacade {
                 .queryParam("sortedBy", sorted)
                 .queryParam("filterBy", filter)
                 .request(MediaType.APPLICATION_JSON)
+                .header(HttpHeaders.AUTHORIZATION, this.sessionBean.getUser().getToken())
                 .get(new GenericType<List<PisteDto>>(){});
         return PisteDtoConverter.toEntityList(pisteDtoList);
     }
@@ -125,6 +154,7 @@ public class FacadePiste extends AbstractFacade {
                 .path("count")
                 .queryParam("filterBy", filter)
                 .request(MediaType.APPLICATION_JSON)
+                .header(HttpHeaders.AUTHORIZATION, this.sessionBean.getUser().getToken())
                 .get(Integer.class);
     }
 }

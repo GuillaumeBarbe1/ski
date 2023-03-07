@@ -1,15 +1,15 @@
 package net.ent.etrs.ski.model.facades;
 
 import net.ent.etrs.ski.exceptions.BusinessException;
-import net.ent.etrs.ski.exceptions.DaoException;
 import net.ent.etrs.ski.model.daos.DaoStation;
+import net.ent.etrs.ski.exceptions.DaoException;
+import net.ent.etrs.ski.model.entities.Piste;
 import net.ent.etrs.ski.model.entities.Station;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -18,80 +18,78 @@ import java.util.Optional;
 @Stateless
 public class FacadeStation {
 
-    private static Log log = LogFactory.getLog("LoggerInit");
-
     @Inject
-    private DaoStation stationDao;
+    private DaoStation daoStation;
 
     public Optional<Station> find(Long id) throws BusinessException {
         try {
-            return this.stationDao.find(id);
+            return this.daoStation.find(id);
         } catch (DaoException e) {
-            throw new BusinessException(e.getMessage(), e);
+            throw new BusinessException(e);
         }
     }
+
 
     public Iterable<Station> findAll() throws BusinessException {
         try {
-            return this.stationDao.findAll();
+            return this.daoStation.findAll();
         } catch (DaoException e) {
-            throw new BusinessException(e.getMessage(), e);
+            throw new BusinessException(e);
         }
     }
+
 
     public Optional<Station> save(Station station) throws BusinessException {
         try {
-            log.info("Enregistrement correctement effectué");
-            return this.stationDao.save(station);
+            return this.daoStation.save(station);
         } catch (DaoException e) {
-            throw new BusinessException(e.getMessage(), e);
+            throw new BusinessException(e);
         }
     }
 
+
     public void delete(Long id) throws BusinessException {
+        Station s = this.find(id).get();
+        s.setPistes(new ArrayList<>());
+        this.save(s);
         try {
-            this.stationDao.delete(id);
+            this.daoStation.delete(id);
         } catch (DaoException e) {
-            throw new BusinessException(e.getMessage(), e);
+            throw new BusinessException(e);
         }
     }
+
 
     public boolean exists(Long id) throws BusinessException {
         try {
-            return this.stationDao.exists(id);
+            return this.daoStation.exists(id);
         } catch (DaoException e) {
-            throw new BusinessException(e.getMessage(), e);
+            throw new BusinessException(e);
         }
     }
+
 
     public long count() throws BusinessException {
         try {
-            return this.stationDao.count();
+            return this.daoStation.count();
         } catch (DaoException e) {
-            throw new BusinessException(e.getMessage(), e);
+            throw new BusinessException(e);
         }
     }
-
-    public void deleteAll(List<Station> stations) throws BusinessException {
-        for (Station p : stations) {
-            this.delete(p.getId());
-        }
-    }
-
-    public List<Station> load(int first, int pageSize, Map<String, String> sortBy, Map<String, String> filterBy) throws BusinessException {
-        return this.stationDao.load(first, pageSize, sortBy, filterBy);
-    }
-
-    public int count(Map<String, String> filterBy) throws BusinessException {
-        return this.stationDao.count(filterBy);
-    }
-
-
+    
     public Optional<Station> findByIdWithPistes(Long id) {
-        return this.stationDao.findByIdWithPistes(id);
+        return this.daoStation.findByIdWithPistes(id);
     }
 
     public Long findByVille(String ville) throws BusinessException {
-        return this.stationDao.findByVille(ville);
+        return this.daoStation.findByVille(ville);
+    }
+
+    public List<Station> load(int first, int pageSize, Map<String, String> sortBy, Map<String, String> filterBy) {
+        return this.daoStation.load(first, pageSize, sortBy, filterBy);
+    }
+
+    public int count(Map<String, String> filterBy) {
+        return this.daoStation.count(filterBy);
     }
 }

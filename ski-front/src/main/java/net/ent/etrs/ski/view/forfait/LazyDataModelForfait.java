@@ -2,7 +2,9 @@ package net.ent.etrs.ski.view.forfait;
 
 import net.ent.etrs.ski.exceptions.BusinessException;
 import net.ent.etrs.ski.model.entities.Forfait;
+import net.ent.etrs.ski.model.entities.Piste;
 import net.ent.etrs.ski.model.facades.FacadeForfait;
+import net.ent.etrs.ski.model.facades.FacadePiste;
 import org.primefaces.model.FilterMeta;
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortMeta;

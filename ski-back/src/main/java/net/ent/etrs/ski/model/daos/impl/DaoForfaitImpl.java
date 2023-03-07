@@ -1,8 +1,16 @@
 package net.ent.etrs.ski.model.daos.impl;
 
+import net.ent.etrs.ski.exceptions.DaoException;
 import net.ent.etrs.ski.model.daos.DaoForfait;
+import net.ent.etrs.ski.model.daos.DaoPiste;
 import net.ent.etrs.ski.model.daos.JpaBaseDao;
 import net.ent.etrs.ski.model.entities.Forfait;
+import net.ent.etrs.ski.model.entities.Piste;
+import net.ent.etrs.ski.model.entities.references.Etat;
+import net.ent.etrs.ski.model.entities.references.Niveau;
+import org.primefaces.model.FilterMeta;
+import org.primefaces.model.SortMeta;
+import org.primefaces.model.SortOrder;
 
 import javax.persistence.TypedQuery;
 import java.io.Serializable;
@@ -10,59 +18,66 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
-public class DaoForfaitImpl extends JpaBaseDao<Forfait, Serializable> implements DaoForfait {
+public class DaoForfaitImpl extends JpaBaseDao<Forfait, Serializable> implements DaoForfait
+{
 
 
     @Override
+    public Iterable<Forfait> findAllByStation(Long id) throws DaoException {
+        try {
+            return this.em.createQuery("SELECT f FROM Forfait f WHERE f IN (SELECT f FROM Station s LEFT JOIN s.lstForfaits f WHERE s.id = :id)", Forfait.class)
+                    .setParameter("id", id)
+                    .getResultList();
+        } catch (Exception e) {
+            throw new DaoException(e);
+        }
+    }
+
+    @Override
     public List<Forfait> load(int first, int pageSize, Map<String, String> sortBy, Map<String, String> filterBy) {
-        String sql = "SELECT p FROM Forfait p WHERE 1=1 ";
+        String sql = "SELECT f FROM Forfait f WHERE 1=1 ";
 
         String nom = null;
         BigDecimal prixJournalier = null;
 
-
-        // filterBy containsKey
-        if (filterBy.containsKey("nom")) {
+        if(filterBy.containsKey("nom")) {
             nom = filterBy.get("nom");
         }
 
-        if (filterBy.containsKey("prixJournalier")) {
+        if(filterBy.containsKey("prixJournalier")) {
             prixJournalier = new BigDecimal(filterBy.get("prixJournalier"));
         }
 
 
-        // test null + test equals or contains (LIKE)
         if (nom != null) {
-            sql += " AND LOWER(p.nom) LIKE :nom ";
+            sql += " AND LOWER(f.nom) LIKE :nom ";
         }
 
         if (prixJournalier != null) {
-            sql += " AND p.prixJournalier = :prixJournalier ";
+            sql += " AND f.prixJournalier = :prixJournalier ";
+
         }
 
-        // OrderBy
+
         if (!sortBy.isEmpty()) {
             sql += " ORDER BY ";
-            for (Map.Entry<String, String> sort : sortBy.entrySet()) {
-                sql += " p." + sort.getKey() + " " + sort.getValue() + ",";
+            for(Map.Entry<String, String> sort : sortBy.entrySet()) {
+                sql += " f." + sort.getKey()+ " " + sort.getValue() + ",";
             }
-            sql = sql.substring(0, sql.length() - 1);
+            sql = sql.substring(0, sql.length() -1);
         } else {
-            // set default orderBy
-            sql += " ORDER BY p.nom DESC ";
+            sql += " ORDER BY f.nom DESC ";
         }
 
-        // TypedQuerry
         TypedQuery<Forfait> q = this.em.createQuery(sql, Forfait.class);
 
         if (nom != null) {
-            q.setParameter("nom", nom.toLowerCase() + "%");
+            q.setParameter("nom", nom.toLowerCase() +"%");
         }
 
         if (prixJournalier != null) {
             q.setParameter("prixJournalier", prixJournalier);
         }
-
 
         q.setFirstResult(first);
         q.setMaxResults(pageSize);
@@ -72,40 +87,40 @@ public class DaoForfaitImpl extends JpaBaseDao<Forfait, Serializable> implements
 
     @Override
     public int count(Map<String, String> filterBy) {
-        String sql = "SELECT COUNT(p) FROM Forfait p WHERE 1=1 ";
+        String sql = "SELECT COUNT(f) FROM Forfait f WHERE 1=1 ";
 
         String nom = null;
         BigDecimal prixJournalier = null;
 
-        // filterBy containsKey
-        if (filterBy.containsKey("nom")) {
+        if(filterBy.containsKey("nom")) {
             nom = filterBy.get("nom");
         }
 
-        if (filterBy.containsKey("prixJournalier")) {
+        if(filterBy.containsKey("prixJournalier")) {
             prixJournalier = new BigDecimal(filterBy.get("prixJournalier"));
         }
 
 
-        // test null + test equals or contains (LIKE)
         if (nom != null) {
-            sql += " AND LOWER(p.nom) LIKE :nom ";
+            sql += " AND LOWER(f.nom) LIKE :nom ";
         }
 
         if (prixJournalier != null) {
-            sql += " AND p.prixJournalier = :prixJournalier ";
+            sql += " AND f.prixJournalier = :prixJournalier ";
+
         }
 
-        // TypedQuerry
+
         TypedQuery<Long> q = this.em.createQuery(sql, Long.class);
 
         if (nom != null) {
-            q.setParameter("nom", nom.toLowerCase() + "%");
+            q.setParameter("nom", nom.toLowerCase() +"%");
         }
 
         if (prixJournalier != null) {
             q.setParameter("prixJournalier", prixJournalier);
         }
+
 
         return q.getSingleResult().intValue();
     }

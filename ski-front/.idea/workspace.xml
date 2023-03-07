@@ -11,26 +11,67 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="112392dd-a81c-486a-a8e7-3945d084aef0" name="Changes" comment="changement count load Piste">
-      <change afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/FacadeUserRest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/dtos/UserLoginDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/filters/JWTFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/filters/RoleAdminFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/filters/annotations/JWTTokenNeeded.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/filters/annotations/RoleAdmin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/filters/annotations/RoleUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/model/entities/security/UserSecurity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ski-back/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/filters/RoleUserFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/filters/SecurityFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/model/facades/dtos/UserLoginDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/view/security/LoginBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/view/security/SessionBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/config/security.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/pages/security/login.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/DaoForfait.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/DaoForfait.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/DaoPiste.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/DaoPiste.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/DaoRemontee.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/DaoRemontee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/DaoStation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/DaoStation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/DaoUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/DaoUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/impl/DaoForfaitImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/impl/DaoForfaitImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/impl/DaoPisteImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/impl/DaoPisteImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/impl/DaoRemonteeImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/impl/DaoRemonteeImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/impl/DaoStationImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/impl/DaoStationImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/impl/DaoUserImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/daos/impl/DaoUserImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/entities/references/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/entities/references/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/FacadeForfait.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/FacadeForfait.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/FacadePiste.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/FacadePiste.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/FacadeRemontee.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/FacadeRemontee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/FacadeStation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/FacadeStation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/FacadeUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/FacadeUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/FacadeForfaitRest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/FacadeForfaitRest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/FacadePisteRest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/FacadePisteRest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/ski_back_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/ski_back_war_exploded.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/ski_front_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/ski_front_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/FacadeRemonteeRest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/FacadeRemonteeRest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/FacadeStationRest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/FacadeStationRest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/FacadeUserRest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/FacadeUserRest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/dtos/converters/PisteDtoConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/dtos/converters/PisteDtoConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/dtos/converters/RemonteeDtoConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/dtos/converters/RemonteeDtoConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/filters/annotations/JWTTokenNeeded.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/filters/annotations/JWTTokenNeeded.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/resources/log4j2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/filters/RequestFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/model/entities/references/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/model/entities/references/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/model/entities/security/UserSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/model/entities/security/UserSecurity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/model/facades/AbstractFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/model/facades/AbstractFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/model/facades/FacadeForfait.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/model/facades/FacadeForfait.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/model/facades/FacadePiste.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/model/facades/FacadePiste.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/model/facades/FacadeRemontee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/model/facades/FacadeRemontee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/model/facades/FacadeStation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/model/facades/FacadeStation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/model/facades/FacadeUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/model/facades/FacadeUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/model/facades/dtos/converters/ForfaitDtoConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/model/facades/dtos/converters/ForfaitDtoConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/model/facades/dtos/converters/PisteDtoConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/model/facades/dtos/converters/PisteDtoConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/model/facades/dtos/converters/StationDtoConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/model/facades/dtos/converters/StationDtoConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/view/forfait/ForfaitListeBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/view/forfait/ForfaitListeBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/view/forfait/LazyDataModelForfait.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/view/forfait/LazyDataModelForfait.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/view/index/IndexBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/view/index/IndexBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/view/index/LoginBean.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/view/remontee/LazyDataModelRemontee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/view/remontee/LazyDataModelRemontee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/view/remontee/RemonteeListeBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/view/remontee/RemonteeListeBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/view/station/LazyDataModelStation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/view/station/LazyDataModelStation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/view/station/StationListeBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/view/station/StationListeBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/templates/main.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/templates/main.xhtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/index.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.xhtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/forfait/liste.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/forfait/liste.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/piste/liste.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/piste/liste.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/remontee/liste.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/remontee/liste.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/station/liste.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/station/liste.xhtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +149,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "E:/UV3/Cours JEE/TP/SkiRest/ski-back/src/main/java/net/ent/etrs/ski/model/facades/api",
+    "last_opened_file_path": "E:/UV3/Cours JEE/TP/SkiRest/ski-back/src",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -126,11 +167,11 @@
       <recent name="net.ent.etrs.ski.exceptions" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\UV3\Cours JEE\TP\SkiRest\ski-back\src" />
+      <recent name="E:\UV3\Cours JEE\TP\SkiRest\ski-front\src" />
       <recent name="E:\UV3\Cours JEE\TP\SkiRest\ski-back\src\main\java\net\ent\etrs\ski\model\facades\api" />
       <recent name="E:\UV3\Cours JEE\TP\SkiRest\ski-back\src\main\resources" />
       <recent name="E:\UV3\Cours JEE\TP\SkiRest\ski-front\src\main\java\net\ent\etrs\ski\utils" />
-      <recent name="E:\UV3\Cours JEE\TP\SkiRest\ski-back\src\main\java\net\ent\etrs\ski\utils" />
-      <recent name="D:\Cours\UV3\JavaEE\TP2\ski-front\src\main\java\net\ent\etrs\ski\model\facades\dtos" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\KL16 -RIA\ski\src\main\webapp\resources\img" />
@@ -294,7 +335,7 @@
       <workItem from="1677826953725" duration="10474000" />
       <workItem from="1677949535837" duration="1712000" />
       <workItem from="1678086607180" duration="5147000" />
-      <workItem from="1678173837180" duration="3097000" />
+      <workItem from="1678173837180" duration="8440000" />
     </task>
     <task id="LOCAL-00001" summary="changement count load Piste">
       <created>1677771528191</created>
@@ -366,7 +407,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678092843932</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="changement count load Piste">
+      <created>1678179093485</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1678179093485</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

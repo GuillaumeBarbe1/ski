@@ -3,13 +3,12 @@ package net.ent.etrs.ski.model.facades.dtos.converters;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import net.ent.etrs.ski.exceptions.BusinessException;
+import net.ent.etrs.ski.model.entities.AbstractEntity;
 import net.ent.etrs.ski.model.entities.Forfait;
-import net.ent.etrs.ski.model.entities.Piste;
-import net.ent.etrs.ski.model.entities.Station;
 import net.ent.etrs.ski.model.facades.FacadePiste;
 import net.ent.etrs.ski.model.facades.dtos.ForfaitDto;
-import net.ent.etrs.ski.model.facades.dtos.StationDto;
 import net.ent.etrs.ski.utils.CDIUtils;
+import org.apache.commons.collections4.IterableUtils;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -30,6 +29,7 @@ public class ForfaitDtoConverter {
                 .id(forfait.getId())
                 .nom(forfait.getNom())
                 .prixJournalier(forfait.getPrixJournalier().toEngineeringString())
+                .pistes(forfait.getPistes().stream().map(AbstractEntity::getId).collect(Collectors.toList()))
                 .build();
     }
 
@@ -53,12 +53,7 @@ public class ForfaitDtoConverter {
         forfait.setNom(forfaitDto.getNom());
         forfait.setPrixJournalier(new BigDecimal(forfaitDto.getPrixJournalier()));
 
-        if (forfaitDto.getPistes() != null) {
-            for (Long idPiste : forfaitDto.getPistes()) {
-                Piste p = ForfaitDtoConverter.facadePiste.find(idPiste).orElseThrow(BusinessException::new);
-                forfait.getPistes().add(p);
-            }
-        }
+        forfait.getPistes().addAll(IterableUtils.toList(facadePiste.findAllByForfait(forfait.getId())));
 
         return forfait;
     }

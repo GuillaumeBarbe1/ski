@@ -5,6 +5,9 @@ import net.ent.etrs.ski.model.entities.Station;
 import net.ent.etrs.ski.model.facades.FacadeStation;
 import net.ent.etrs.ski.model.facades.api.dtos.StationDto;
 import net.ent.etrs.ski.model.facades.api.dtos.converters.StationDtoConverter;
+import net.ent.etrs.ski.model.facades.api.filters.annotations.JWTTokenNeeded;
+import net.ent.etrs.ski.model.facades.api.filters.annotations.RoleAdmin;
+import net.ent.etrs.ski.model.facades.api.filters.annotations.RoleUser;
 import net.ent.etrs.ski.utils.Utils;
 import org.apache.commons.collections4.IterableUtils;
 
@@ -16,33 +19,37 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+@JWTTokenNeeded
 @Path("/stations")
 public class FacadeStationRest {
-
+    
     @Inject
     private FacadeStation facadeStation;
 
     @GET
     @Path("/")
+    @RoleUser
     @Produces(MediaType.APPLICATION_JSON)
     public Response findAll(@QueryParam("first") @DefaultValue("1") Integer first,
-                            @QueryParam("pageSize") @DefaultValue("10") Integer pageSize,
-                            @QueryParam("sortedBy") @DefaultValue("nom:ASC") String sortedBy,
+                            @QueryParam("pageSize") @DefaultValue("10")  Integer pageSize,
+                            @QueryParam("sortedBy") @DefaultValue("nom:ASC")  String sortedBy,
                             @QueryParam("filterBy") @DefaultValue("") String filterBy) {
         try {
+
             Map<String, String> filter = Utils.strToMap(filterBy);
             Map<String, String> sorted = Utils.strToMap(sortedBy);
 
             List<Station> list = IterableUtils.toList(this.facadeStation.load(first, pageSize, sorted, filter));
-
+            
             return Response.ok(StationDtoConverter.toDtoList(list)).build();
-        } catch (BusinessException e) {
+        } catch (Exception e) {
             return Response.serverError().build();
         }
     }
-
+    
     @GET
     @Path("/{id}")
+    @RoleUser
     @Produces(MediaType.APPLICATION_JSON)
     public Response findById(@PathParam("id") Long id) {
         try {
@@ -50,14 +57,16 @@ public class FacadeStationRest {
             if (optionalStation.isEmpty()) {
                 return Response.status(Response.Status.NOT_FOUND).build();
             }
+            
             return Response.ok(StationDtoConverter.toDto(optionalStation.get())).build();
         } catch (BusinessException e) {
             return Response.serverError().build();
         }
     }
-
+    
     @POST
     @Path("/")
+    @RoleAdmin
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response create(StationDto stationDto) {
@@ -72,9 +81,10 @@ public class FacadeStationRest {
             return Response.serverError().build();
         }
     }
-
+    
     @PUT
     @Path("/{id}")
+    @RoleAdmin
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response update(@PathParam("id") Long id, StationDto stationDto) {
@@ -92,8 +102,9 @@ public class FacadeStationRest {
             return Response.serverError().build();
         }
     }
-
+    
     @DELETE
+    @RoleAdmin
     @Path("/{id}")
     public Response delete(@PathParam("id") Long id) {
         try {
@@ -109,6 +120,7 @@ public class FacadeStationRest {
 
     @GET
     @Path("/count")
+    @RoleUser
     @Produces(MediaType.APPLICATION_JSON)
     public Response count(
             @QueryParam("filterBy") @DefaultValue("") String filterBy) {
@@ -116,8 +128,9 @@ public class FacadeStationRest {
             Map<String, String> filter = Utils.strToMap(filterBy);
             int count = this.facadeStation.count(filter);
             return Response.ok(count).build();
-        } catch (BusinessException e) {
+        } catch (Exception e) {
             return Response.serverError().build();
         }
     }
+
 }

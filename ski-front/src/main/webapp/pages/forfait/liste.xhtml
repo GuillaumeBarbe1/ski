@@ -1,52 +1,45 @@
 <ui:composition lang="Fr" xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
                 template="/WEB-INF/templates/main.xhtml">
-    <ui:define name="titre">Forfait disponibles</ui:define>
+   <ui:define name="titre">Forfait disponibles</ui:define>
 
-    <ui:define name="corps">
-        <h:form>
+   <ui:define name="corps">
+      <h:form>
 
-            <p:commandButton icon="pi pi-plus" styleClass="ui-button-primary" value="Créer" immediate="true"
-                             action="/pages/forfait/fiche.xhtml?faces-redirect=true"/>
-            <p:dataTable value="#{forfaitListeBean.forfaitList}" var="f" widgetVar="wv"
-                         currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
-                         paginator="true"
-                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                         rows="10" rowsPerPageTemplate="5,10,15"
-            >
-                <p:column headerText="Nom" sortBy="#{f.nom}" filterBy="#{f.nom}">
-                    #{f.nom}
-                </p:column>
+         <p:commandButton icon="pi pi-plus"  styleClass="ui-button-primary" value="Créer" immediate="true" action="/pages/forfait/fiche.xhtml?faces-redirect=true" rendered="#{sessionBean.canAction('forfait.create')}" />
+         <p:dataTable value="#{forfaitListeBean.forfaitList}" var="f" widgetVar="wv" lazy="true"
+                      currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                      paginator="true" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rows="10" rowsPerPageTemplate="5,10,15"
+         >
+            <p:column headerText="Nom" sortBy="#{f.nom}" filterBy="#{f.nom}">
+               #{f.nom}
+            </p:column>
 
-                <p:column headerText="Prix" sortBy="#{f.prixJournalier}" filterBy="#{f.prixJournalier}">
-                    #{f.prixJournalier}
-                </p:column>
-                <p:column headerText="Piste">
-                    <p:dataList value="#{f.pistes}" var="pis">
-                        #{pis.nom}
-                    </p:dataList>
+            <p:column headerText="Prix" sortBy="#{f.prixJournalier}" filterBy="#{f.prixJournalier}">
+               #{f.prixJournalier}
+            </p:column>
+            <p:column headerText="Piste">
+               <p:dataList value="#{f.pistes}" var="pis">
+                  #{pis.nom}
+               </p:dataList>
 
-                </p:column>
+            </p:column>
 
-                <p:column headerText="Actions">
-                    <p:commandButton icon="pi pi-fw pi-pencil" styleClass="rounded-button ui-button-primary"
-                                     action="/pages/forfait/fiche.xhtml?faces-redirect=true"
-                                     actionListener="#{forfaitListeBean.modifier(f.id)}"/>
-                    <p:commandButton icon="pi pi-fw pi-trash" styleClass="rounded-button ui-button-danger"
-                                     actionListener="#{forfaitListeBean.supprimer(f.id)}" process="@this"
-                                     update="@form growl">
-                        <p:confirm type="popup" header="Confirmation" message="Etes-vous sûre de vouloir supprimer ?"
-                                   icon="pi pi-exclamation-triangle"/>
-                    </p:commandButton>
-                </p:column>
-            </p:dataTable>
+            <p:column headerText="Actions">
+               <p:commandButton icon="pi pi-fw pi-pencil" styleClass="rounded-button ui-button-primary" action="/pages/forfait/fiche.xhtml?faces-redirect=true" actionListener="#{forfaitListeBean.modifier(f.id)}" rendered="#{sessionBean.canAction('forfait.update')}" />
+               <p:commandButton icon="pi pi-fw pi-trash" styleClass="rounded-button ui-button-danger" actionListener="#{forfaitListeBean.supprimer(f.id)}" process="@this" update="@form growl" rendered="#{sessionBean.canAction('forfait.delete')}">
+                  <p:confirm type="popup" header="Confirmation" message="Etes-vous sûre de vouloir supprimer ?" icon="pi pi-exclamation-triangle"/>
+               </p:commandButton>
+            </p:column>
+         </p:dataTable>
 
-            <p:confirmPopup global="true">
-                <p:commandButton value="Non" type="button" styleClass="ui-confirm-popup-no ui-button-flat"/>
-                <p:commandButton value="Oui" type="button" styleClass="ui-confirm-popup-yes"/>
-            </p:confirmPopup>
-        </h:form>
-    </ui:define>
+         <p:confirmPopup global="true">
+            <p:commandButton value="Non" type="button" styleClass="ui-confirm-popup-no ui-button-flat"/>
+            <p:commandButton value="Oui" type="button" styleClass="ui-confirm-popup-yes" />
+         </p:confirmPopup>
+      </h:form>
+   </ui:define>
 </ui:composition>

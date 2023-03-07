@@ -8,8 +8,7 @@ import java.util.Optional;
 
 public interface DaoUser extends BaseDao<User, Serializable> {
 
-    User findByLoginPasswd(String login, String password) throws DaoException;
-
+    User findByLoginPasswd(String login, String password ) throws DaoException;
+    
     Optional<User> findByLogin(String login);
-
 }

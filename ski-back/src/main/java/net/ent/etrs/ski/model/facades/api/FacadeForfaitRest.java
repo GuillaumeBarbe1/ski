@@ -2,9 +2,16 @@ package net.ent.etrs.ski.model.facades.api;
 
 import net.ent.etrs.ski.exceptions.BusinessException;
 import net.ent.etrs.ski.model.entities.Forfait;
+import net.ent.etrs.ski.model.entities.Piste;
 import net.ent.etrs.ski.model.facades.FacadeForfait;
+import net.ent.etrs.ski.model.facades.FacadePiste;
 import net.ent.etrs.ski.model.facades.api.dtos.ForfaitDto;
+import net.ent.etrs.ski.model.facades.api.dtos.PisteDto;
 import net.ent.etrs.ski.model.facades.api.dtos.converters.ForfaitDtoConverter;
+import net.ent.etrs.ski.model.facades.api.dtos.converters.PisteDtoConverter;
+import net.ent.etrs.ski.model.facades.api.filters.annotations.JWTTokenNeeded;
+import net.ent.etrs.ski.model.facades.api.filters.annotations.RoleAdmin;
+import net.ent.etrs.ski.model.facades.api.filters.annotations.RoleUser;
 import net.ent.etrs.ski.utils.Utils;
 import org.apache.commons.collections4.IterableUtils;
 
@@ -14,26 +21,37 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 
+@JWTTokenNeeded
 @Path("/forfaits")
 public class FacadeForfaitRest {
+
 
     @Inject
     private FacadeForfait facadeForfait;
 
     @GET
     @Path("/")
+    @RoleUser
     @Produces(MediaType.APPLICATION_JSON)
     public Response findAll(@QueryParam("first") @DefaultValue("1") Integer first,
-                            @QueryParam("pageSize") @DefaultValue("10") Integer pageSize,
-                            @QueryParam("sortedBy") @DefaultValue("nom:ASC") String sortedBy,
-                            @QueryParam("filterBy") @DefaultValue("") String filterBy) {
+                            @QueryParam("pageSize") @DefaultValue("10")  Integer pageSize,
+                            @QueryParam("sortedBy") @DefaultValue("nom:ASC")  String sortedBy,
+                            @QueryParam("filterBy") @DefaultValue("") String filterBy,
+                            @QueryParam("station") Long id) {
         try {
+
             Map<String, String> filter = Utils.strToMap(filterBy);
             Map<String, String> sorted = Utils.strToMap(sortedBy);
 
-            List<Forfait> list = IterableUtils.toList(this.facadeForfait.load(first, pageSize, sorted, filter));
+            List<Forfait> list;
+            if(Objects.isNull(id)){
+                list = IterableUtils.toList(this.facadeForfait.load(first, pageSize, sorted, filter));
+            } else {
+                list = IterableUtils.toList(this.facadeForfait.findAllByStation(id));
+            }
 
             return Response.ok(ForfaitDtoConverter.toDtoList(list)).build();
         } catch (BusinessException e) {
@@ -43,6 +61,7 @@ public class FacadeForfaitRest {
 
     @GET
     @Path("/{id}")
+    @RoleUser
     @Produces(MediaType.APPLICATION_JSON)
     public Response findById(@PathParam("id") Long id) {
         try {
@@ -50,6 +69,7 @@ public class FacadeForfaitRest {
             if (optionalForfait.isEmpty()) {
                 return Response.status(Response.Status.NOT_FOUND).build();
             }
+
             return Response.ok(ForfaitDtoConverter.toDto(optionalForfait.get())).build();
         } catch (BusinessException e) {
             return Response.serverError().build();
@@ -58,6 +78,7 @@ public class FacadeForfaitRest {
 
     @POST
     @Path("/")
+    @RoleAdmin
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response create(ForfaitDto forfaitDto) {
@@ -75,6 +96,7 @@ public class FacadeForfaitRest {
 
     @PUT
     @Path("/{id}")
+    @RoleAdmin
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response update(@PathParam("id") Long id, ForfaitDto forfaitDto) {
@@ -95,6 +117,7 @@ public class FacadeForfaitRest {
 
     @DELETE
     @Path("/{id}")
+    @RoleAdmin
     public Response delete(@PathParam("id") Long id) {
         try {
             if (!this.facadeForfait.exists(id)) {
@@ -109,6 +132,7 @@ public class FacadeForfaitRest {
 
     @GET
     @Path("/count")
+    @RoleUser
     @Produces(MediaType.APPLICATION_JSON)
     public Response count(
             @QueryParam("filterBy") @DefaultValue("") String filterBy) {
@@ -116,7 +140,7 @@ public class FacadeForfaitRest {
             Map<String, String> filter = Utils.strToMap(filterBy);
             int count = this.facadeForfait.count(filter);
             return Response.ok(count).build();
-        } catch (BusinessException e) {
+        } catch (Exception e) {
             return Response.serverError().build();
         }
     }

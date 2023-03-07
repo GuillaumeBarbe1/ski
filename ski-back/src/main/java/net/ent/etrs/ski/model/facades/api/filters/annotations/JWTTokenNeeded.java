@@ -1,5 +1,6 @@
 package net.ent.etrs.ski.model.facades.api.filters.annotations;
 
+import javax.persistence.Table;
 import javax.ws.rs.NameBinding;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

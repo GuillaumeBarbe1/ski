@@ -3,14 +3,15 @@ package net.ent.etrs.ski.model.facades.dtos.converters;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import net.ent.etrs.ski.exceptions.BusinessException;
+import net.ent.etrs.ski.model.entities.AbstractEntity;
 import net.ent.etrs.ski.model.entities.Forfait;
 import net.ent.etrs.ski.model.entities.Piste;
 import net.ent.etrs.ski.model.entities.Station;
 import net.ent.etrs.ski.model.facades.FacadeForfait;
 import net.ent.etrs.ski.model.facades.FacadePiste;
-import net.ent.etrs.ski.model.facades.dtos.PisteDto;
 import net.ent.etrs.ski.model.facades.dtos.StationDto;
 import net.ent.etrs.ski.utils.CDIUtils;
+import org.apache.commons.collections4.IterableUtils;
 
 import java.util.ArrayList;
 import java.util.Base64;
@@ -37,6 +38,8 @@ public class StationDtoConverter {
                 .altitude(station.getAltitude())
                 .etat(station.getEtat())
                 .photo(station.getPhoto() != null ? Base64.getEncoder().encodeToString(station.getPhoto()) : null)
+                .pistes(station.getPistes().stream().map(AbstractEntity::getId).collect(Collectors.toList()))
+                .forfaits(station.getLstForfaits().stream().map(AbstractEntity::getId).collect(Collectors.toList()))
                 .build();
     }
     
@@ -63,20 +66,10 @@ public class StationDtoConverter {
         station.setAltitude(stationDto.getAltitude());
         station.setEtat(stationDto.getEtat());
         station.setPhoto(stationDto.getPhoto() != null ? Base64.getDecoder().decode(stationDto.getPhoto()) : null);
-        
-        if (stationDto.getPistes() != null) {
-            for (Long idPiste : stationDto.getPistes()) {
-                Piste p = StationDtoConverter.facadePiste.find(idPiste).orElseThrow(BusinessException::new);
-                station.getPistes().add(p);
-            }
-        }
-        
-        if (stationDto.getForfaits() != null) {
-            for (Long idForfait : stationDto.getForfaits()) {
-                Forfait f = StationDtoConverter.facadeForfait.find(idForfait).orElseThrow(BusinessException::new);
-                station.getLstForfaits().add(f);
-            }
-        }
+
+        station.getPistes().addAll(IterableUtils.toList(facadePiste.findAllByStation(station.getId())));
+        station.getLstForfaits().addAll(IterableUtils.toList(facadeForfait.findAllByStation(station.getId())));
+
         return station;
     }
 }

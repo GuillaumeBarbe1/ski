@@ -5,15 +5,12 @@ import lombok.NoArgsConstructor;
 import net.ent.etrs.ski.exceptions.BusinessException;
 import net.ent.etrs.ski.model.entities.AbstractEntity;
 import net.ent.etrs.ski.model.entities.Piste;
-import net.ent.etrs.ski.model.entities.Remontee;
 import net.ent.etrs.ski.model.facades.FacadeRemontee;
 import net.ent.etrs.ski.model.facades.dtos.PisteDto;
-import net.ent.etrs.ski.model.facades.dtos.RemonteeDto;
 import net.ent.etrs.ski.utils.CDIUtils;
 import org.apache.commons.collections4.IterableUtils;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 

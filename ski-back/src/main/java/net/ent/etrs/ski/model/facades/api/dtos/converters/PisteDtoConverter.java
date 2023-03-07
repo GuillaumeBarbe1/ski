@@ -3,12 +3,16 @@ package net.ent.etrs.ski.model.facades.api.dtos.converters;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import net.ent.etrs.ski.exceptions.BusinessException;
+import net.ent.etrs.ski.model.entities.Forfait;
 import net.ent.etrs.ski.model.entities.Piste;
 import net.ent.etrs.ski.model.entities.Remontee;
+import net.ent.etrs.ski.model.facades.FacadePiste;
 import net.ent.etrs.ski.model.facades.FacadeRemontee;
+import net.ent.etrs.ski.model.facades.api.dtos.ForfaitDto;
 import net.ent.etrs.ski.model.facades.api.dtos.PisteDto;
 import net.ent.etrs.ski.utils.CDIUtils;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 

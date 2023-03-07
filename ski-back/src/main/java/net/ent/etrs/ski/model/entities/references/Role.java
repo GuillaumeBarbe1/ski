@@ -11,33 +11,32 @@ public enum Role {
     USER("Utilisateur"),
     ADMIN("Administrateur", USER),
     GESTIONNAIRE("Gestionnaire", USER),
-    SUPERADMIN("SuperAdmin", ADMIN, GESTIONNAIRE),
-    ;
-
+    SUPERADMIN("SuperAdmin",ADMIN, GESTIONNAIRE),;
+    
     @Getter
     private final String libelle;
-
+    
     private final List<Role> roles;
-
+    
     Role(String libelle, Role... roles) {
         this.libelle = libelle;
         this.roles = Arrays.asList(roles);
     }
-
+    
+    public boolean hasRole(Role role) {
+        return this.getAllRoles().contains(role);
+    }
+    
+    public Set<Role> getAllRoles() {
+        return Role.getAllRoles(this);
+    }
+    
     private static Set<Role> getAllRoles(Role role) {
         Set<Role> roles = new HashSet<>();
         roles.add(role);
         for (Role r : role.roles) {
             roles.addAll(getAllRoles(r));
         }
-        return roles;
-    }
-
-    public boolean hasRole(Role role) {
-        return this.getAllRoles().contains(role);
-    }
-
-    public Set<Role> getAllRoles() {
-        return Role.getAllRoles(this);
+        return  roles;
     }
 }

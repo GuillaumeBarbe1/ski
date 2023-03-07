@@ -11,7 +11,8 @@ import java.util.stream.Collectors;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class RemonteeDtoConverter {
-    
+
+
     public static RemonteeDto toDto(Remontee remontee) {
         return RemonteeDto.builder()
                 .id(remontee.getId())

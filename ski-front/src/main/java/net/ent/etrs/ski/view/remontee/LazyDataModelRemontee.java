@@ -1,8 +1,9 @@
 package net.ent.etrs.ski.view.remontee;
 
-
 import net.ent.etrs.ski.exceptions.BusinessException;
+import net.ent.etrs.ski.model.entities.Piste;
 import net.ent.etrs.ski.model.entities.Remontee;
+import net.ent.etrs.ski.model.facades.FacadePiste;
 import net.ent.etrs.ski.model.facades.FacadeRemontee;
 import org.primefaces.model.FilterMeta;
 import org.primefaces.model.LazyDataModel;
@@ -13,7 +14,6 @@ import java.util.List;
 import java.util.Map;
 
 public class LazyDataModelRemontee extends LazyDataModel<Remontee> {
-
     @Inject
     private FacadeRemontee facade;
 

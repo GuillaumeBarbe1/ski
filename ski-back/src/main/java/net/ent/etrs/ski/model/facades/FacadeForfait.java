@@ -4,8 +4,7 @@ import net.ent.etrs.ski.exceptions.BusinessException;
 import net.ent.etrs.ski.exceptions.DaoException;
 import net.ent.etrs.ski.model.daos.DaoForfait;
 import net.ent.etrs.ski.model.entities.Forfait;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import net.ent.etrs.ski.model.entities.Piste;
 
 import javax.ejb.Local;
 import javax.ejb.Stateless;
@@ -16,76 +15,74 @@ import java.util.Optional;
 
 @Local
 @Stateless
-public class FacadeForfait {
-
-    private static Log log = LogFactory.getLog("LoggerInit");
-
+public class FacadeForfait
+{
+    
     @Inject
-    private DaoForfait forfaitDao;
-
+    private DaoForfait daoForfait;
+    
     public Optional<Forfait> find(Long id) throws BusinessException {
         try {
-            return this.forfaitDao.find(id);
+            return this.daoForfait.find(id);
         } catch (DaoException e) {
-            throw new BusinessException(e.getMessage(), e);
+            throw new BusinessException(e);
         }
     }
-
+    
     public Iterable<Forfait> findAll() throws BusinessException {
         try {
-            return this.forfaitDao.findAll();
+            return this.daoForfait.findAll();
         } catch (DaoException e) {
-            throw new BusinessException(e.getMessage(), e);
+            throw new BusinessException(e);
         }
     }
-
+    
     public Optional<Forfait> save(Forfait forfait) throws BusinessException {
         try {
-            log.info("Enregistrement correctement effectué");
-            return this.forfaitDao.save(forfait);
+            return this.daoForfait.save(forfait);
         } catch (DaoException e) {
-            throw new BusinessException(e.getMessage(), e);
+            throw new BusinessException(e);
         }
     }
-
+    
     public void delete(Long id) throws BusinessException {
         try {
-            this.forfaitDao.delete(id);
+            this.daoForfait.delete(id);
         } catch (DaoException e) {
-            throw new BusinessException(e.getMessage(), e);
+            throw new BusinessException(e);
         }
     }
-
+    
     public boolean exists(Long id) throws BusinessException {
         try {
-            return this.forfaitDao.exists(id);
+            return this.daoForfait.exists(id);
         } catch (DaoException e) {
-            throw new BusinessException(e.getMessage(), e);
+            throw new BusinessException(e);
         }
     }
-
+    
     public long count() throws BusinessException {
         try {
-            return this.forfaitDao.count();
+            return this.daoForfait.count();
         } catch (DaoException e) {
-            throw new BusinessException(e.getMessage(), e);
+            throw new BusinessException(e);
         }
     }
 
-    public void deleteAll(List<Forfait> forfaits) throws BusinessException {
-        for (Forfait p : forfaits) {
-            this.delete(p.getId());
+    public Iterable<Forfait> findAllByStation(Long id) throws BusinessException {
+        try {
+            return this.daoForfait.findAllByStation(id);
+        } catch (DaoException e) {
+            throw new BusinessException(e);
         }
     }
 
-
-    public List<Forfait> load(int first, int pageSize, Map<String, String> sortBy, Map<String, String> filterBy) throws BusinessException {
-        return this.forfaitDao.load(first, pageSize, sortBy, filterBy);
+    public List<Forfait> load(int first, int pageSize, Map<String, String> sortBy, Map<String, String> filterBy) {
+        return this.daoForfait.load(first, pageSize, sortBy, filterBy);
     }
 
-    public int count(Map<String, String> filterBy) throws BusinessException {
-        return this.forfaitDao.count(filterBy);
+    public int count(Map<String, String> filterBy) {
+        return this.daoForfait.count(filterBy);
     }
-
 
 }

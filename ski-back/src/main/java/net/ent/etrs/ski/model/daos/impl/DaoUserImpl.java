@@ -13,22 +13,23 @@ import java.util.Optional;
 
 public class DaoUserImpl extends JpaBaseDao<User, Serializable> implements DaoUser {
 
+
     @Override
     public User findByLoginPasswd(String login, String password) throws DaoException {
 
-        TypedQuery<User> q = this.em.createQuery("SELECT u FROM User u WHERE u.login = :login AND u.password =:passwd", User.class);
-        q.setParameter("passwd", password);
-        q.setParameter("login", login);
-        return q.getSingleResult();
+            TypedQuery<User> q = this.em.createQuery("SELECT u FROM User u WHERE u.login = :login AND u.password =:passwd", User.class);
+            q.setParameter("passwd", password);
+            q.setParameter("login",login);
+            return q.getSingleResult();
     }
-
+    
     @Override
     public Optional<User> findByLogin(String login) {
         try {
             TypedQuery<User> q = this.em.createQuery("SELECT u FROM User u WHERE u.login = :login", User.class);
-            q.setParameter("login", login);
+            q.setParameter("login",login);
             return Optional.of(q.getSingleResult());
-        } catch (NoResultException e) {
+        } catch (NoResultException e ) {
             return Optional.empty();
         }
     }

@@ -3,9 +3,13 @@ package net.ent.etrs.ski.view.remontee;
 
 import lombok.Getter;
 import net.ent.etrs.ski.exceptions.BusinessException;
+import net.ent.etrs.ski.model.entities.Remontee;
+import net.ent.etrs.ski.model.entities.Station;
 import net.ent.etrs.ski.model.entities.references.Etat;
 import net.ent.etrs.ski.model.facades.FacadeRemontee;
+import net.ent.etrs.ski.model.facades.FacadeStation;
 import net.ent.etrs.ski.utils.JsfUtils;
+import org.apache.commons.collections4.IterableUtils;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -32,7 +36,12 @@ public class RemonteeListeBean implements Serializable {
 
     @PostConstruct
     public void init() {
-    
+//        try {
+//            this.remonteeList = IterableUtils.toList(this.facadeRemontee.findAll());
+//        } catch (BusinessException e)
+//        {
+//            JsfUtils.sendMessage(FacesMessage.SEVERITY_ERROR, "Erreur chargement metier");
+//        }
     }
 
     public void supprimer(Long id) throws Exception {
@@ -46,15 +55,16 @@ public class RemonteeListeBean implements Serializable {
     }
 
     public void modifier(Long id) {
-        try {
+        try{
             FacesContext.getCurrentInstance().getExternalContext().getFlash().put(this.FLASH, id);
-        } catch (Exception e) {
+        }catch(Exception e){
             JsfUtils.sendMessage(e);
         }
 
     }
 
-    public List<Etat> getEtats() {
+    public List<Etat> getEtats()
+    {
         return Arrays.asList(Etat.values());
     }
 }

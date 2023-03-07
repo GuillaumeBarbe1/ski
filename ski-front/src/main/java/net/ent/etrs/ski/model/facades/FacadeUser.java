@@ -2,33 +2,25 @@ package net.ent.etrs.ski.model.facades;
 
 import net.ent.etrs.ski.exceptions.BusinessException;
 import net.ent.etrs.ski.model.entities.User;
+import net.ent.etrs.ski.model.facades.dtos.UserLoginDto;
 
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.core.HttpHeaders;
+import javax.ws.rs.core.MediaType;
 import java.io.Serializable;
 import java.util.Optional;
 
-public class FacadeUser implements Serializable {
-    public User findByLoginPassword(String login, String password) throws BusinessException {
-        return null;
-    }
-
+public class FacadeUser extends AbstractFacade {
     
-    public Iterable<User> findAll() throws BusinessException {
-        return null;
-    }
+    private static final String URL_USERS = BACK_URL + "users/";
     
-    public Optional<User> save(User user) throws BusinessException {
-        return null;
-    }
-    
-    public void delete(Long id) throws BusinessException {
-    }
-    
-    public boolean exists(Long id) throws BusinessException {
-        return true;
-    }
-    
-    public long count() throws BusinessException {
-        return 0;
+    public String login(UserLoginDto userLoginDto) {
+        return this.client
+                .target(URL_USERS)
+                .path("login")
+                .request(MediaType.APPLICATION_JSON)
+                .post(Entity.json(userLoginDto))
+                .getHeaderString(HttpHeaders.AUTHORIZATION);
     }
 
 }

@@ -13,6 +13,7 @@ public interface DaoStation extends BaseDao<Station, Serializable> {
     public Optional<Station> findByIdWithPistes(Long id);
 
     public Long findByVille(String ville);
+
     List<Station> load(int first, int pageSize, Map<String, String> sortBy, Map<String, String> filterBy);
 
     int count(Map<String, String> filterBy);
