@@ -7,6 +7,7 @@ import net.ent.etrs.ski.model.entities.*;
 import net.ent.etrs.ski.model.entities.references.Etat;
 import net.ent.etrs.ski.model.entities.references.Niveau;
 import net.ent.etrs.ski.model.entities.references.Role;
+import net.ent.etrs.ski.utils.Hash;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
@@ -57,23 +58,29 @@ public class InitData {
             User admin = new User();
             admin.setLogin("admin");
             admin.setRole(Role.ADMIN);
-            admin.setPassword("admin");
-            this.daoUser.save(admin);
+            admin.setPassword(Hash.hash("admin"));
+
+
             User user = new User();
             user.setLogin("user");
             user.setRole(Role.USER);
-            user.setPassword("user");
-            this.daoUser.save(user);
+            user.setPassword(Hash.hash("user"));
+
             User superAdmin = new User();
             superAdmin.setLogin("superAdmin");
             superAdmin.setRole(Role.SUPERADMIN);
-            superAdmin.setPassword("superAdmin");
-            this.daoUser.save(superAdmin);
+            superAdmin.setPassword(Hash.hash("superAdmin"));
+
             User gestion = new User();
             gestion.setLogin("gestion");
             gestion.setRole(Role.GESTIONNAIRE);
-            gestion.setPassword("gestion");
+            gestion.setPassword(Hash.hash("gestion"));
+
+            this.daoUser.save(admin);
+            this.daoUser.save(user);
+            this.daoUser.save(superAdmin);
             this.daoUser.save(gestion);
+
         }
     }
 

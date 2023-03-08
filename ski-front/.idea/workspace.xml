@@ -11,10 +11,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="112392dd-a81c-486a-a8e7-3945d084aef0" name="Changes" comment="sécurité++, manque juste du hash">
+      <change afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/utils/Hash.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/init/InitData.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/init/InitData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/FacadeUserRest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ski-back/src/main/java/net/ent/etrs/ski/model/facades/api/FacadeUserRest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/model/facades/FacadeUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/ent/etrs/ski/model/facades/FacadeUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config/security.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/security.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +92,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "E:/UV3/Cours JEE/TP/SkiRest/ski-front",
+    "last_opened_file_path": "E:/UV3/Cours JEE/TP/ski-rest-8",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -110,11 +110,11 @@
       <recent name="net.ent.etrs.ski.exceptions" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\UV3\Cours JEE\TP\SkiRest\ski-back\src\main\java\net\ent\etrs\ski\utils" />
       <recent name="E:\UV3\Cours JEE\TP\SkiRest\ski-back\src" />
       <recent name="E:\UV3\Cours JEE\TP\SkiRest\ski-front\src" />
       <recent name="E:\UV3\Cours JEE\TP\SkiRest\ski-back\src\main\java\net\ent\etrs\ski\model\facades\api" />
       <recent name="E:\UV3\Cours JEE\TP\SkiRest\ski-back\src\main\resources" />
-      <recent name="E:\UV3\Cours JEE\TP\SkiRest\ski-front\src\main\java\net\ent\etrs\ski\utils" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\KL16 -RIA\ski\src\main\webapp\resources\img" />
@@ -279,7 +279,7 @@
       <workItem from="1677949535837" duration="1712000" />
       <workItem from="1678086607180" duration="5147000" />
       <workItem from="1678173837180" duration="18300000" />
-      <workItem from="1678277709219" duration="1792000" />
+      <workItem from="1678277709219" duration="6194000" />
     </task>
     <task id="LOCAL-00001" summary="changement count load Piste">
       <created>1677771528191</created>
@@ -365,7 +365,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678185913967</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="sécurité++, manque juste du hash">
+      <created>1678280165980</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1678280165980</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
