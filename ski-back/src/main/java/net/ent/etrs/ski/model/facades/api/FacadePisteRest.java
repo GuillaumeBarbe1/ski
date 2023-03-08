@@ -2,13 +2,9 @@ package net.ent.etrs.ski.model.facades.api;
 
 import net.ent.etrs.ski.exceptions.BusinessException;
 import net.ent.etrs.ski.model.entities.Piste;
-import net.ent.etrs.ski.model.entities.Station;
 import net.ent.etrs.ski.model.facades.FacadePiste;
-import net.ent.etrs.ski.model.facades.FacadeStation;
 import net.ent.etrs.ski.model.facades.api.dtos.PisteDto;
-import net.ent.etrs.ski.model.facades.api.dtos.StationDto;
 import net.ent.etrs.ski.model.facades.api.dtos.converters.PisteDtoConverter;
-import net.ent.etrs.ski.model.facades.api.dtos.converters.StationDtoConverter;
 import net.ent.etrs.ski.model.facades.api.filters.annotations.JWTTokenNeeded;
 import net.ent.etrs.ski.model.facades.api.filters.annotations.RoleAdmin;
 import net.ent.etrs.ski.model.facades.api.filters.annotations.RoleUser;
@@ -19,7 +15,10 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
 
 
 @JWTTokenNeeded
@@ -33,9 +32,9 @@ public class FacadePisteRest {
     @Path("/")
     @RoleUser
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findAll(@QueryParam("first") @DefaultValue("1") Integer first,
-                            @QueryParam("pageSize") @DefaultValue("10")  Integer pageSize,
-                            @QueryParam("sortedBy") @DefaultValue("nom:ASC")  String sortedBy,
+    public Response findAll(@QueryParam("first") @DefaultValue("0") Integer first,
+                            @QueryParam("pageSize") @DefaultValue("10") Integer pageSize,
+                            @QueryParam("sortedBy") @DefaultValue("nom:ASC") String sortedBy,
                             @QueryParam("filterBy") @DefaultValue("") String filterBy,
                             @QueryParam("forfait") Long idForfait,
                             @QueryParam("station") Long idStation) {
@@ -44,14 +43,13 @@ public class FacadePisteRest {
             Map<String, String> sorted = Utils.strToMap(sortedBy);
 
             List<Piste> list;
-            if(Objects.isNull(idForfait) && Objects.isNull(idStation)){
+            if (Objects.isNull(idForfait) && Objects.isNull(idStation)) {
                 list = IterableUtils.toList(this.facadePiste.load(first, pageSize, sorted, filter));
             } else if (!Objects.isNull(idForfait)) {
                 list = IterableUtils.toList(this.facadePiste.findAllByForfait(idForfait));
             } else {
                 list = IterableUtils.toList(this.facadePiste.findAllByStation(idStation));
             }
-
 
 
             return Response.ok(PisteDtoConverter.toDtoList(list)).build();
@@ -130,7 +128,7 @@ public class FacadePisteRest {
             return Response.serverError().build();
         }
     }
-    
+
     @GET
     @Path("/count")
     @RoleUser

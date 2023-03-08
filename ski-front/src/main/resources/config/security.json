@@ -1,5 +1,5 @@
 {
-  "ADMIN" : {
+  "ADMIN": {
     "uris": [
       "/pages/forfait/fiche.xhtml",
       "/pages/piste/fiche.xhtml",
@@ -7,7 +7,7 @@
       "/pages/station/carte.xhtml",
       "/pages/station/fiche.xhtml"
     ],
-    "actions" : [
+    "actions": [
       "forfait.create",
       "forfait.update",
       "forfait.delete",
@@ -22,7 +22,7 @@
       "station.delete"
     ]
   },
-  "USER" : {
+  "USER": {
     "uris": [
       "/pages/forfait/liste.xhtml",
       "/pages/piste/liste.xhtml",
@@ -30,14 +30,59 @@
       "/pages/station/liste.xhtml",
       "/index.xhtml"
     ],
-    "actions" : [
+    "actions": [
     ]
   },
-  "ALWAYS" : {
-    "uris" : [
-        "/pages/security/login.xhtml"
+  "ALWAYS": {
+    "uris": [
+      "/pages/security/login.xhtml"
     ],
-    "actions" : [
+    "actions": [
+    ]
+  },
+  "SUPERADMIN": {
+    "uris": [
+      "/pages/forfait/fiche.xhtml",
+      "/pages/piste/fiche.xhtml",
+      "/pages/remontee/fiche.xhtml",
+      "/pages/station/carte.xhtml",
+      "/pages/station/fiche.xhtml"
+    ],
+    "actions": [
+      "forfait.create",
+      "forfait.update",
+      "forfait.delete",
+      "piste.create",
+      "piste.update",
+      "piste.delete",
+      "remontee.create",
+      "remontee.update",
+      "remontee.delete",
+      "station.create",
+      "station.update",
+      "station.delete"
+    ]
+  },
+  "GESTIONNAIRE": {
+    "uris": [
+      "/pages/forfait/fiche.xhtml",
+      "/pages/piste/fiche.xhtml",
+      "/pages/remontee/fiche.xhtml",
+      "/pages/station/fiche.xhtml"
+    ],
+    "actions": [
+      "forfait.create",
+      "forfait.update",
+      "forfait.delete",
+      "piste.create",
+      "piste.update",
+      "piste.delete",
+      "remontee.create",
+      "remontee.update",
+      "remontee.delete",
+      "station.create",
+      "station.update",
+      "station.delete"
     ]
   }
 }

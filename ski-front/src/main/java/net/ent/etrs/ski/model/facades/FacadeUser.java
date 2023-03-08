@@ -1,19 +1,15 @@
 package net.ent.etrs.ski.model.facades;
 
-import net.ent.etrs.ski.exceptions.BusinessException;
-import net.ent.etrs.ski.model.entities.User;
 import net.ent.etrs.ski.model.facades.dtos.UserLoginDto;
 
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
-import java.io.Serializable;
-import java.util.Optional;
 
 public class FacadeUser extends AbstractFacade {
-    
+
     private static final String URL_USERS = BACK_URL + "users/";
-    
+
     public String login(UserLoginDto userLoginDto) {
         return this.client
                 .target(URL_USERS)
@@ -22,5 +18,4 @@ public class FacadeUser extends AbstractFacade {
                 .post(Entity.json(userLoginDto))
                 .getHeaderString(HttpHeaders.AUTHORIZATION);
     }
-
 }

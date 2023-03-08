@@ -21,7 +21,7 @@ import java.util.Optional;
 @JWTTokenNeeded
 @Path("/remontees")
 public class FacadeRemonteeRest {
-    
+
     @Inject
     private FacadeRemontee facadeRemontee;
 
@@ -29,9 +29,9 @@ public class FacadeRemonteeRest {
     @Path("/")
     @RoleUser
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findAll(@QueryParam("first") @DefaultValue("1") Integer first,
-                            @QueryParam("pageSize") @DefaultValue("10")  Integer pageSize,
-                            @QueryParam("sortedBy") @DefaultValue("nom:ASC")  String sortedBy,
+    public Response findAll(@QueryParam("first") @DefaultValue("0") Integer first,
+                            @QueryParam("pageSize") @DefaultValue("10") Integer pageSize,
+                            @QueryParam("sortedBy") @DefaultValue("nom:ASC") String sortedBy,
                             @QueryParam("filterBy") @DefaultValue("") String filterBy,
                             @QueryParam("piste") Long id) {
         try {
@@ -40,7 +40,7 @@ public class FacadeRemonteeRest {
             Map<String, String> sorted = Utils.strToMap(sortedBy);
 
             List<Remontee> list;
-            if(Objects.isNull(id)){
+            if (Objects.isNull(id)) {
                 list = IterableUtils.toList(this.facadeRemontee.load(first, pageSize, sorted, filter));
             } else {
                 list = IterableUtils.toList(this.facadeRemontee.findAllByPiste(id));
@@ -51,7 +51,7 @@ public class FacadeRemonteeRest {
             return Response.serverError().build();
         }
     }
-    
+
     @GET
     @Path("/{id}")
     @RoleUser
@@ -62,13 +62,13 @@ public class FacadeRemonteeRest {
             if (optionalRemontee.isEmpty()) {
                 return Response.status(Response.Status.NOT_FOUND).build();
             }
-            
+
             return Response.ok(optionalRemontee.get()).build();
         } catch (BusinessException e) {
             return Response.serverError().build();
         }
     }
-    
+
     @POST
     @Path("/")
     @RoleAdmin
@@ -85,7 +85,7 @@ public class FacadeRemonteeRest {
             return Response.serverError().build();
         }
     }
-    
+
     @PUT
     @Path("/{id}")
     @RoleAdmin
@@ -105,7 +105,7 @@ public class FacadeRemonteeRest {
             return Response.serverError().build();
         }
     }
-    
+
     @DELETE
     @Path("/{id}")
     @RoleAdmin

@@ -2,13 +2,9 @@ package net.ent.etrs.ski.model.facades.api;
 
 import net.ent.etrs.ski.exceptions.BusinessException;
 import net.ent.etrs.ski.model.entities.Forfait;
-import net.ent.etrs.ski.model.entities.Piste;
 import net.ent.etrs.ski.model.facades.FacadeForfait;
-import net.ent.etrs.ski.model.facades.FacadePiste;
 import net.ent.etrs.ski.model.facades.api.dtos.ForfaitDto;
-import net.ent.etrs.ski.model.facades.api.dtos.PisteDto;
 import net.ent.etrs.ski.model.facades.api.dtos.converters.ForfaitDtoConverter;
-import net.ent.etrs.ski.model.facades.api.dtos.converters.PisteDtoConverter;
 import net.ent.etrs.ski.model.facades.api.filters.annotations.JWTTokenNeeded;
 import net.ent.etrs.ski.model.facades.api.filters.annotations.RoleAdmin;
 import net.ent.etrs.ski.model.facades.api.filters.annotations.RoleUser;
@@ -36,9 +32,9 @@ public class FacadeForfaitRest {
     @Path("/")
     @RoleUser
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findAll(@QueryParam("first") @DefaultValue("1") Integer first,
-                            @QueryParam("pageSize") @DefaultValue("10")  Integer pageSize,
-                            @QueryParam("sortedBy") @DefaultValue("nom:ASC")  String sortedBy,
+    public Response findAll(@QueryParam("first") @DefaultValue("0") Integer first,
+                            @QueryParam("pageSize") @DefaultValue("10") Integer pageSize,
+                            @QueryParam("sortedBy") @DefaultValue("nom:ASC") String sortedBy,
                             @QueryParam("filterBy") @DefaultValue("") String filterBy,
                             @QueryParam("station") Long id) {
         try {
@@ -47,7 +43,7 @@ public class FacadeForfaitRest {
             Map<String, String> sorted = Utils.strToMap(sortedBy);
 
             List<Forfait> list;
-            if(Objects.isNull(id)){
+            if (Objects.isNull(id)) {
                 list = IterableUtils.toList(this.facadeForfait.load(first, pageSize, sorted, filter));
             } else {
                 list = IterableUtils.toList(this.facadeForfait.findAllByStation(id));

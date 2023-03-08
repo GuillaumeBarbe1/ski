@@ -22,7 +22,7 @@ import java.util.Optional;
 @JWTTokenNeeded
 @Path("/stations")
 public class FacadeStationRest {
-    
+
     @Inject
     private FacadeStation facadeStation;
 
@@ -30,9 +30,9 @@ public class FacadeStationRest {
     @Path("/")
     @RoleUser
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findAll(@QueryParam("first") @DefaultValue("1") Integer first,
-                            @QueryParam("pageSize") @DefaultValue("10")  Integer pageSize,
-                            @QueryParam("sortedBy") @DefaultValue("nom:ASC")  String sortedBy,
+    public Response findAll(@QueryParam("first") @DefaultValue("0") Integer first,
+                            @QueryParam("pageSize") @DefaultValue("10") Integer pageSize,
+                            @QueryParam("sortedBy") @DefaultValue("nom:ASC") String sortedBy,
                             @QueryParam("filterBy") @DefaultValue("") String filterBy) {
         try {
 
@@ -40,13 +40,13 @@ public class FacadeStationRest {
             Map<String, String> sorted = Utils.strToMap(sortedBy);
 
             List<Station> list = IterableUtils.toList(this.facadeStation.load(first, pageSize, sorted, filter));
-            
+
             return Response.ok(StationDtoConverter.toDtoList(list)).build();
         } catch (Exception e) {
             return Response.serverError().build();
         }
     }
-    
+
     @GET
     @Path("/{id}")
     @RoleUser
@@ -57,13 +57,13 @@ public class FacadeStationRest {
             if (optionalStation.isEmpty()) {
                 return Response.status(Response.Status.NOT_FOUND).build();
             }
-            
+
             return Response.ok(StationDtoConverter.toDto(optionalStation.get())).build();
         } catch (BusinessException e) {
             return Response.serverError().build();
         }
     }
-    
+
     @POST
     @Path("/")
     @RoleAdmin
@@ -81,7 +81,7 @@ public class FacadeStationRest {
             return Response.serverError().build();
         }
     }
-    
+
     @PUT
     @Path("/{id}")
     @RoleAdmin
@@ -102,7 +102,7 @@ public class FacadeStationRest {
             return Response.serverError().build();
         }
     }
-    
+
     @DELETE
     @RoleAdmin
     @Path("/{id}")
